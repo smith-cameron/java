@@ -1,6 +1,8 @@
 class ZooKeeperController {
     public static void main(String[] args) {
-        Gorilla kingKong = new Gorilla();
+		Mammal tarzan = new Mammal("Tarzan");
+		tarzan.displayEnergy();
+        Gorilla kingKong = new Gorilla("King Kong");
 		kingKong.throwSomething();
 		kingKong.throwSomething();
 		kingKong.throwSomething();
@@ -8,14 +10,19 @@ class ZooKeeperController {
 		kingKong.eatBananas();
 		kingKong.climb();
 		kingKong.displayEnergy();
-        Bat smaug = new Bat();
+        Bat smaug = new Bat("Smaug");
 		smaug.fly();
 		smaug.attackTown();
 		smaug.fly();
 		smaug.attackTown();
 		smaug.eatHumans();
-		smaug.eatHumans();
+		smaug.fly();
 		smaug.attackTown();
+		smaug.eatHumans();
+		smaug.fly();
+		smaug.fly();
+		smaug.eatHumans();
+		smaug.fly();
 		smaug.displayEnergy();
     }
 }
