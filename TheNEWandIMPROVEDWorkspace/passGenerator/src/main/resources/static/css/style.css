@@ -1,0 +1,35 @@
+@charset "UTF-8";
+#wrapper{
+	width: 1000px;
+	height: 600px;
+	margin: 0px auto;
+	padding-top: 5px;
+	background: rgb(110,116,208);
+	background: radial-gradient(circle, rgba(110,116,208,1) 0%, rgba(56,64,142,1) 100%);
+	color: white;
+}
+#head{
+	text-align: center;
+	text-decoration: underline;
+	color: black;
+	margin-top: 50px;
+}
+#subHead{
+	text-align: center;
+	text-decoration: underline;
+	margin-top: 20px;
+}
+#inputForm{
+	display: block;
+	text-align: center;
+}
+.formGroup{
+	display: inline-block;
+	border: thin solid black;
+	border-radius: 8px;
+	padding: 6px 8px;
+	
+}
+.validations{
+	color: yellow;
+}
