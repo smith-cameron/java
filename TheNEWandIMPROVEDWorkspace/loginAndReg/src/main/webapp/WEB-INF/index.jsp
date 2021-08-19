@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Welcome!</title>
-<link rel="stylesheet" href="/css/loginRegStyle.css">
+<link rel="stylesheet" href="/css/loginStyle.css">
 </head>
 <body>
 	<div id=wrapper>
@@ -15,9 +15,9 @@
 		<div id="regDiv">
 			<h2 class="subHead">Register</h2>
 			<form:form action="/register" method="post" modelAttribute="user">
+					<form:errors class="validations" path="firstName"/>
 				<div class="formGroup">
 					<form:label path="firstName">First Name:</form:label>
-					<form:errors class="validations" path="firstName"/>
 					<form:input class="formInput" path="firstName"/>
 				</div>
 					<form:errors class="validations" path="lastName"/>
@@ -34,6 +34,15 @@
 				<div class="formGroup">
 					<form:label path="password">Password:</form:label>
 					<form:input class="formInput" type="password" path="password"/>
+					<ul id=passReq>
+						<li id=listHead>Password Must Contain:</li>
+						<li>at least 8 characters and at most 20 characters</li>
+						<li>at least one number</li>
+						<li>at least one upper case letter</li>
+						<li>at least one lower case letter</li>
+						<li>at least one special character which includes !@#$%&*()-+=^</li>
+						<li>and no spaces</li>
+					</ul>
 				</div>
 					<form:errors class="validations" path="confirmPassword"/>
 				<div class="formGroup">
@@ -45,7 +54,7 @@
 		</div>
 		<div id="loginDiv">
 			<h2 class="subHead">Login</h2>
-			<h3 class="validations">loginError</h3>
+			<h3 class="validations">${loginError}</h3>
 			<form action="/login" method="post">
 				<div class="formGroup">
 					<label>Email:</label>

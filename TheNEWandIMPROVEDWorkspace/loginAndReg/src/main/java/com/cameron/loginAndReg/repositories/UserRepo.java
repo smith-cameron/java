@@ -10,7 +10,6 @@ import com.cameron.loginAndReg.models.User;
 @Repository
 public interface UserRepo extends CrudRepository<User, Long> {
 	List<User> findAll();
-	//Query for ordering messages by likes
-
 	boolean existsByEmail(String email);
+	User findByEmail(String email);
 }
