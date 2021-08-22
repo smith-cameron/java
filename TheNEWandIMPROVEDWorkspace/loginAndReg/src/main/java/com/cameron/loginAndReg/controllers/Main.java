@@ -32,6 +32,7 @@ public class Main {
 	@PostMapping("/register")
 	public String registerUser(@Valid @ModelAttribute("user")User user, BindingResult result, HttpSession session) {
 		validator.validate(user, result);
+		System.out.println(user.getPassword());
 		if (result.hasErrors()) {
 			return "index.jsp";
 		}

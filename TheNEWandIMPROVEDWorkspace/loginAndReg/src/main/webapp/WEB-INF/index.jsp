@@ -14,7 +14,7 @@
 		<h1 id="head">Login or Register</h1>
 		<div id="regDiv">
 			<h2 class="subHead">Register</h2>
-			<form:form action="/register" method="post" modelAttribute="user">
+			<form:form method="POST" action="/register" modelAttribute="user">
 					<form:errors class="validations" path="firstName"/>
 				<div class="formGroup">
 					<form:label path="firstName">First Name:</form:label>

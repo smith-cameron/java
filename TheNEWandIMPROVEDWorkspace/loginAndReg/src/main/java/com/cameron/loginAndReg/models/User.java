@@ -50,7 +50,7 @@ public class User {
 	private String lastName;
 	@NotBlank(message="Password Required")
 	@Size(min=8, max=20)
-	@Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&-+=()])(?=\\S+$)", message="Invalid Password Input")
+	@Pattern(regexp = "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%&*()-+=^])(?=\\S+$)", message="Invalid Password Input")
 	private String password;
 	@NotBlank(message="Password Comparison Required")
 	@Transient
