@@ -35,16 +35,13 @@ public class Language {
 	protected void onUpdate(){
 	    this.updatedAt = new Date();
 	}
-	@Column
-	@NotBlank
-	@Size(min = 1, max = 20)
+	@NotBlank(message="Name Field Required")
+	@Size(min = 1, max = 20, message="Name must be between 1 & 20 Characters")
 	private String name;
-	@Column
-	@NotBlank
+	@NotBlank(message="Creator Field Required")
 	@Size(min = 1, max = 20)
 	private String creator;
-	@Column
-	@NotBlank
+	@NotBlank(message="Version Field Required")
 	private String version;
 	
 	public Language() {

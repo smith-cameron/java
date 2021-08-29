@@ -33,20 +33,20 @@
 		</tbody>
 	</table>
 	<form:form id="inputForm" action="/languages" method="post" modelAttribute="language">
+	        <form:errors class="validation" path="name"/>
 		<p>
 	        <form:label class="formLabel" path="name">Name:</form:label>
 	        <form:input class="formInput" path="name"/>
-	        <form:errors class="validation" path="name"/>
 	    </p>
+	        <form:errors class="validation" path="creator"/>
 	    <p>
 	        <form:label class="formLabel" path="creator">Creator:</form:label>
 	        <form:input class="formInput" path="creator"/>
-	        <form:errors class="validation" path="creator"/>
 	    </p>
+	        <form:errors class="validation" path="version"/>
 	    <p>
 	        <form:label class="formLabel" path="version">Version:</form:label>
 	        <form:input class="formInput" path="version"/>
-	        <form:errors class="validation" path="version"/>
 	    </p>
 	    <input id="button" type="submit" value="Submit"/>
 	</form:form>
