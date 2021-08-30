@@ -14,6 +14,7 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -38,6 +39,7 @@ public class Dorm {
 		this.updatedAt = new Date();
 	}
 	@NotBlank
+	@Size(min=2, max=255, message="Must be 2-255 characters")
 	private String name;
 //	Table Relationships ----------------------------------------------------
 	@OneToMany(mappedBy="dorm", fetch = FetchType.LAZY, orphanRemoval=true)

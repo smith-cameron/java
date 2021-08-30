@@ -39,6 +39,7 @@ public class Contact {
 		this.updatedAt = new Date();
 	}
 	@NotBlank(message="Address Required")
+	@Size(min=2, max=255, message="Must be 2-255 characters")
 	private String address;
 	@NotBlank(message="City Required")
 	private String city;
