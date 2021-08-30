@@ -1,6 +1,7 @@
 package com.cameron.students.models;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,19 +9,17 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name="contacts")
-public class Contact {
+@Table(name="dorms")
+public class Dorm {
 //	Attributes ------------------------------------------------------------
 	@Id
 	@GeneratedValue (strategy=GenerationType.IDENTITY)
@@ -38,63 +37,45 @@ public class Contact {
 	protected void onUpdate(){
 		this.updatedAt = new Date();
 	}
-	@NotBlank(message="Address Required")
-	private String address;
-	@NotBlank(message="City Required")
-	private String city;
 	@NotBlank
-	@Size(min=2, message="Must be at leased 2 characters")
-	private String state;
+	private String name;
 //	Table Relationships ----------------------------------------------------
-	@OneToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="student_id")
-    private Student student;
+	@OneToMany(mappedBy="dorm", fetch = FetchType.LAZY, orphanRemoval=true)
+    private List<Student> students;
 //	Constructors -----------------------------------------------------------
-	public Contact() {
+	public Dorm() {
 		
 	}
 //	Getters/Setters --------------------------------------------------------
 	public Long getId() {
-		return id;
+		return this.id;
 	}
 	public void setId(Long id) {
 		this.id = id;
 	}
 	public Date getCreatedAt() {
-		return createdAt;
+		return this.createdAt;
 	}
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
 	}
 	public Date getUpdatedAt() {
-		return updatedAt;
+		return this.updatedAt;
 	}
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-	public String getAddress() {
-		return address;
+	public String getName() {
+		return this.name;
 	}
-	public void setAddress(String address) {
-		this.address = address;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getCity() {
-		return city;
+	public List<Student> getStudents() {
+		return this.students;
 	}
-	public void setCity(String city) {
-		this.city = city;
-	}
-	public String getState() {
-		return state;
-	}
-	public void setState(String state) {
-		this.state = state;
-	}
-	public Student getStudent() {
-		return student;
-	}
-	public void setStudent(Student student) {
-		this.student = student;
+	public void setStudents(List<Student> students) {
+		this.students = students;
 	}
 	
 }

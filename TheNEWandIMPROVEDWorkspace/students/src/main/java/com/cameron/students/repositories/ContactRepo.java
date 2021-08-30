@@ -10,6 +10,4 @@ import com.cameron.students.models.Contact;
 @Repository
 public interface ContactRepo extends CrudRepository<Contact, Long>{
 	List<Contact> findAll();
-
-
 }

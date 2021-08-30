@@ -12,8 +12,9 @@
 </head>
 <body>
 <div id="wrapper">
+	<a class="link" href="/dorms">Dormitories</a>
 	<a class="link" href="/students/new">New Student</a>
-	<a id="homelink" href="/students">Home</a>
+	<a class="link" href="/students">Home</a>
 	<h1 id="head">Contact Info</h1>
 	<div id="inputForm">
 		<form:form id="inputForm" action="/contacts/new" method="post" modelAttribute="contact">
@@ -22,7 +23,11 @@
 				<form:label path="student">Student:</form:label>
 				<form:select class="formInput" path="student">
 		     		<c:forEach items="${students}" var="student">
- 						<form:option value="${student.id}">${student.firstName} ${student.lastName}</form:option>
+		     		<c:choose>
+			     		<c:when test="${student.contact == null }">
+	 						<form:option value="${student.id}">${student.firstName} ${student.lastName}</form:option>
+					    </c:when>
+				    </c:choose>
 				    </c:forEach>
 				</form:select>
 			</div>

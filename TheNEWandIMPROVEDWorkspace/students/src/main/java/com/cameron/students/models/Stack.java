@@ -3,7 +3,6 @@ package com.cameron.students.models;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,21 +12,17 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name="students")
-public class Student {
+@Table(name="stacks")
+public class Stack {
 //	Attributes ------------------------------------------------------------
 	@Id
 	@GeneratedValue (strategy=GenerationType.IDENTITY)
@@ -45,30 +40,19 @@ public class Student {
 	protected void onUpdate(){
 		this.updatedAt = new Date();
 	}
-	@NotBlank(message="Name Required")
+	@NotBlank(message = "Stack Name Required")
 	@Size(min=2, max=255, message="Must be 2-255 characters")
-	private String firstName;
-	@NotBlank(message="Name Required")
-	@Size(min=2, max=255, message="Must be 2-255 characters")
-	private String lastName;
-	@NotNull(message="Age Required")
-	@Min(value=18, message="Must be older than 18")
-	private int age;
+	private String name;
 //	Table Relationships ----------------------------------------------------
-	@OneToOne(mappedBy="student", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
-    private Contact contact;
-	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="dorm_id")
-    private Dorm dorm;
 	@ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
         name = "stack_student", 
-        joinColumns = @JoinColumn(name = "student_id"), 
-        inverseJoinColumns = @JoinColumn(name = "stack_id")
+        joinColumns = @JoinColumn(name = "stack_id"), 
+        inverseJoinColumns = @JoinColumn(name = "student_id")
     )
-    private List<Stack> stacks;
+	private List<Student> students;
 //	Constructors -----------------------------------------------------------
-	public Student() {
+	public Stack() {
 		
 	}
 //	Getters/Setters --------------------------------------------------------
@@ -90,42 +74,17 @@ public class Student {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-	public String getFirstName() {
-		return firstName;
+	public String getName() {
+		return name;
 	}
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getLastName() {
-		return lastName;
+	public List<Student> getStudents() {
+		return students;
 	}
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setStudents(List<Student> students) {
+		this.students = students;
 	}
-	public int getAge() {
-		return age;
-	}
-	public void setAge(int age) {
-		this.age = age;
-	}
-	public Contact getContact() {
-		return contact;
-	}
-	public void setContact(Contact contact) {
-		this.contact = contact;
-	}
-	public Dorm getDorm() {
-		return dorm;
-	}
-	public void setDorm(Dorm dorm) {
-		this.dorm = dorm;
-	}
-	public List<Stack> getStacks() {
-		return stacks;
-	}
-	public void setStacks(List<Stack> stacks) {
-		this.stacks = stacks;
-	}
-	
 	
 }

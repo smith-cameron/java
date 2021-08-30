@@ -18,13 +18,13 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Entity
 @Table(name="languages")
 public class Language {
+//	------ Attributes ------
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	@Column(updatable=false)
 	@DateTimeFormat(pattern = "MM/dd/yyyy HH:mm:ss")
 	private Date createdAt;
-	@Column
 	@DateTimeFormat(pattern = "MM/dd/yyyy HH:mm:ss")
 	private Date updatedAt;
 	@PrePersist
@@ -43,7 +43,7 @@ public class Language {
 	private String creator;
 	@NotBlank(message="Version Field Required")
 	private String version;
-	
+//	------ Constructors ------
 	public Language() {
 		
 	}
@@ -52,6 +52,7 @@ public class Language {
 		this.creator = creator;
 		this.version = version;
 	}
+//	------ Getters & Setters ------
 	public Long getId() {
 		return this.id;
 	}

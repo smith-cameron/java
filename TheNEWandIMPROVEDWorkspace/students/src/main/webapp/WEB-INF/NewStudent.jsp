@@ -12,11 +12,12 @@
 </head>
 <body>
 <div id="wrapper">
+	<a class="link" href="/dorms">Dormitories</a>
 	<a class="link" href="/contacts/new">New Contact</a>
-	<a id="homelink" href="/students">Home</a>
+	<a class="link" href="/students">Home</a>
 	<h1 id="head">New Student</h1>
 	<div id="inputForm">
-		<form:form id="inputForm" action="/students/new" method="post" modelAttribute="student">
+		<form:form id="inputForm" action="/students/new" method="post" modelAttribute="cookies">
 		        <form:errors class="validation" path="firstName"/>
 			<div class="formGroup">
 		        <form:label class="formLabel" path="firstName">First Name:</form:label>
