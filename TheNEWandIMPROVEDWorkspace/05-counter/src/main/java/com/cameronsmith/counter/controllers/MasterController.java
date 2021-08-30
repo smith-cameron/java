@@ -1,10 +1,10 @@
 package com.cameronsmith.counter.controllers;
 
 import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class MasterController {
@@ -22,7 +22,7 @@ public class MasterController {
 		session.setAttribute("count", currentCount);
 	}
 	
-	@RequestMapping(value="/", method=RequestMethod.GET)
+	@GetMapping("/")
 	public String index(HttpSession session) {
 		Integer count = getCount(session);
 		count +=1;
@@ -30,18 +30,18 @@ public class MasterController {
 		return "index.jsp";
 	}
 	
-	@RequestMapping(value="/counter", method=RequestMethod.GET)
+	@GetMapping("/counter")
 	public String count(HttpSession session, Model viewModel){
 		Integer currentCount = (Integer) session.getAttribute("count");
 		viewModel.addAttribute("count", currentCount);
         return "counter.jsp";
     }
-	@RequestMapping(value="/reset", method=RequestMethod.GET)
+	@GetMapping("/reset")
 	public String reset(HttpSession session) {
 		session.invalidate();
 		return "redirect:/counter";
 	}
-	@RequestMapping(value="/twice", method=RequestMethod.GET)
+	@GetMapping("/twice")
 	public String index2(HttpSession session) {
 		Integer count = (Integer) session.getAttribute("count");
 		count +=2;

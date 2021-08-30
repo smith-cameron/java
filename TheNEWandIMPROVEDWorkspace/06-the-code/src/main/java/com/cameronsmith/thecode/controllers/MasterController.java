@@ -1,8 +1,8 @@
 package com.cameronsmith.thecode.controllers;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -11,11 +11,11 @@ public class MasterController {
 	private Boolean codeInput(String input) {
 		return input.equals("bushido");
 	}
-	@RequestMapping(value="/", method=RequestMethod.GET)
+	@GetMapping("/")
 	public String index(){
 		return "index.jsp";
 	}
-	@RequestMapping(value="/inputForm", method=RequestMethod.POST)
+	@PostMapping("/inputForm")
 	public String form(@RequestParam(value="input")String input, RedirectAttributes errors) {
 		if(codeInput(input)) {
 			return "redirect:/code";			
@@ -23,7 +23,7 @@ public class MasterController {
 		errors.addFlashAttribute("error", "That is not The Way");
 		return "redirect:/";
 	}
-	@RequestMapping(value="/code", method=RequestMethod.GET)
+	@GetMapping("code")
 	public String code() {
 		return "code.jsp";
 	}
