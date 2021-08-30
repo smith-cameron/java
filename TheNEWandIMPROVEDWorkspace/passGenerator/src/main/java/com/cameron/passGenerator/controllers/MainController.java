@@ -20,9 +20,9 @@ public class MainController {
 	}
 	@PostMapping("/create")
 	public String generate(@ModelAttribute("password")Password password) {
-		String newPass = this.pService.randomString(10);
-		System.out.println(newPass);
-		Password thisPass = this.pService.create(newPass);
+		String newPass = this.pService.randomString(8);
+//		System.out.println("Controller: "+newPass);
+		this.pService.create(newPass);
 		return "redirect:/";
 	}
 	

@@ -43,9 +43,9 @@ public class Password {
 			
 		}
 	
-	public Password(String passWord) {
-		this.passWord = passWord;
-	}
+//	public Password(String passWord) {
+//		this.passWord = passWord;
+//	}
 //	Getters/Setters ------------------------------------
 	public Long getId() {
 		return id;

@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,13 +17,11 @@ public class PasswordService {
 	@Autowired
 	public PasswordRepo pRepo;
 	
-	public Password create(Password newEntry) {
-//		String hash = BCrypt.hashpw(newEntry.getPassWord(), BCrypt.gensalt());
-//		newEntry.setPassWord(hash);
-		return this.pRepo.save(newEntry);
-	}
 	public Password create(String newEntry) {
-		return this.pRepo.save(newEntry);
+		Password output = new Password();
+		String hash = BCrypt.hashpw(newEntry, BCrypt.gensalt());
+		output.setPassWord(hash);
+		return this.pRepo.save(output);
 	}
 	public Password updateEntry(Password toUpdate) {
 		return this.pRepo.save(toUpdate);
@@ -84,6 +83,7 @@ public class PasswordService {
         	}
         }
         output += symbols.get(randValue.nextInt(symbols.size()));
+        System.out.println("Service: "+output);
         return output;
     }
 	
