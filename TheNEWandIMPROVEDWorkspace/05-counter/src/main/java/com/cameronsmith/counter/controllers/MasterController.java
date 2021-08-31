@@ -8,14 +8,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class MasterController {
-	@SuppressWarnings("unused")
-	private Integer currentCount;
-	
 	public Integer getCount(HttpSession session){
         if(session.getAttribute("count") == null) {
             session.setAttribute("count", 0);
         }
-         return currentCount = (Integer) session.getAttribute("count");
+         return (Integer) session.getAttribute("count");
     }
 	
 	public void setCount(HttpSession session, Integer currentCount) {
@@ -36,11 +33,13 @@ public class MasterController {
 		viewModel.addAttribute("count", currentCount);
         return "counter.jsp";
     }
+	
 	@GetMapping("/reset")
 	public String reset(HttpSession session) {
 		session.invalidate();
 		return "redirect:/counter";
 	}
+	
 	@GetMapping("/twice")
 	public String index2(HttpSession session) {
 		Integer count = (Integer) session.getAttribute("count");
