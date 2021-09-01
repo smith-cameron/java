@@ -34,11 +34,16 @@ public class MasterController {
 	private MessageService mService;
 	@Autowired
 	private UserValidator validator;
+	private String[] stateList = {"California","Oregon","Texas","Arizona","Colorado"};
+	
 	
 	@GetMapping("/")
-	public String loginAndReg(@ModelAttribute("user")User user) {
+	public String loginAndReg(@ModelAttribute("user")User user, Model viewModel) {
+		viewModel.addAttribute("theStates", stateList);
+		System.out.println(stateList);
 		return "index.jsp";
 	}
+	
 	@PostMapping("/register")
 	public String registerUser(@Valid @ModelAttribute("user")User user, BindingResult result, HttpSession session) {
 		validator.validate(user, result);
@@ -49,6 +54,7 @@ public class MasterController {
 		session.setAttribute("user_id", newUser.getId());
 		return "redirect:/events";
 	}
+	
 	@PostMapping("/login")
 	public String loginUser(@RequestParam("loginEmail")String email, @RequestParam("loginPassword")String password, RedirectAttributes redirectAttrs, HttpSession session) {
 		if(!this.uService.authenticateUser(email, password)) {
@@ -59,8 +65,10 @@ public class MasterController {
 		session.setAttribute("user_id", user.getId());
 		return "redirect:/events";
 	}
+	
 	@GetMapping("/events")
-	public String allEvents(@ModelAttribute("event")Event event, HttpSession session, Model viewModel) {
+	public String allEvents(HttpSession session, Model viewModel) {
+		Event newEvent = new Event();
 		Long userId = (Long)session.getAttribute("user_id");
 		if(userId == null) {
 			return "redirect:/";
@@ -69,11 +77,14 @@ public class MasterController {
 		String currentState = currentUser.getState();
 		List<Event> inStateEvents = this.eService.getEventsByUserState(currentState);
 		List<Event> otherStateEvents = this.eService.getOtherEventsByUserState(currentState);
+		viewModel.addAttribute("theStates", stateList);
+		viewModel.addAttribute("event", newEvent);
 		viewModel.addAttribute("currentUser", currentUser);
 		viewModel.addAttribute("inStateEvents", inStateEvents);
 		viewModel.addAttribute("otherStateEvents", otherStateEvents);
 		return "displayAll.jsp";
 	}
+	
 	@PostMapping("/events/new")
 	public String newEvent(@Valid @ModelAttribute("event")Event eventInput, BindingResult result, HttpSession session, Model viewModel) {
 		Long userId = (Long)session.getAttribute("user_id");
@@ -90,6 +101,7 @@ public class MasterController {
 		this.eService.createEntry(eventInput);
 		return "redirect:/events";
 	}
+	
 	@GetMapping("/events/{id}/join")
 	public String joinEvent(@PathVariable("id")Long eventid, HttpSession session) {
 		Long userId = (Long)session.getAttribute("user_id");
@@ -98,6 +110,7 @@ public class MasterController {
 		this.eService.joinEvent(eventToJoin, currentUser);
 		return "redirect:/events";
 	}
+	
 	@GetMapping("/events/{id}/unjoin")
 	public String unJoinEvent(@PathVariable("id")Long eventId, HttpSession session) {
 		Long userId = (Long)session.getAttribute("user_id");
@@ -106,46 +119,41 @@ public class MasterController {
 		this.eService.unJoinEvent(eventToJoin, currentUser);
 		return "redirect:/events";
 	}
+	
 	@GetMapping("/events/{id}/delete")
 	public String deleteEvent(@PathVariable("id")Long eventId) {
 		this.eService.deleteById(eventId);
 		return "redirect:/events";
 	}
+	
 	@GetMapping("/events/{id}/edit")
 	public String editEvent(@ModelAttribute("event")Event eventInput, @PathVariable("id")Long eventId, Model viewModel, HttpSession session) {
 		Long userId = (Long)session.getAttribute("user_id");
 		User currentUser = this.uService.getById(userId);
 		Event eventToEdit = this.eService.getEventById(eventId);
 		if(userId.equals(eventToEdit.getHost().getId())) {
-			viewModel.addAttribute("event", eventToEdit);
+			viewModel.addAttribute("theStates", stateList);
+			viewModel.addAttribute("thisEvent", eventToEdit);
 			viewModel.addAttribute("currentUser", currentUser);
 			return "edit.jsp";
 		}
 		return "redirect:/events";
 	}
+	
 	@PostMapping("/events/{id}/edit")
 	public String updateEvent(@Valid @ModelAttribute("event")Event eventInput, BindingResult result, @PathVariable("id")Long eventId, HttpSession session, Model viewModel) {
 		Event eventToEdit = this.eService.getEventById(eventId);
-		viewModel.addAttribute("event", eventToEdit);
+		viewModel.addAttribute("theStates", stateList);
+		viewModel.addAttribute("thisEvent", eventToEdit);
 		if (result.hasErrors()) {
-			viewModel.addAttribute("event", eventToEdit);
+			viewModel.addAttribute("theStates", stateList);
+			viewModel.addAttribute("thisEvent", eventToEdit);
 			return "edit.jsp";
 		}
 		this.eService.updateEntry(eventInput);
 		return "redirect:/events";
 	}
-//	@PostMapping("/events/{id}/edit")
-//	public String updateEvent(@RequestParam("host")User host, @RequestParam("eventName")String name, @RequestParam("eventLocation")String location, @RequestParam("eventDate")Date date,  @RequestParam("eventState")String state, @PathVariable("id")Long eventId, HttpSession session, Model viewModel) {
-//		Event eventToEdit = this.eService.getEventById(eventId);
-//		viewModel.addAttribute("event", eventToEdit);
-//		eventToEdit.setHost(host);
-//		eventToEdit.setEventName(name);
-//		eventToEdit.setEventLocation(location);
-//		eventToEdit.setEventDate(date);
-//		eventToEdit.setEventState(state);
-//		this.eService.updateEntry(eventToEdit);
-//		return "redirect:/events";
-//	}
+	
 	@GetMapping("/events/{id}")
 	public String eventInfo(@PathVariable("id")Long id, Model viewModel, HttpSession session) {
 		Event thisEvent = this.eService.getEventById(id);
@@ -161,6 +169,7 @@ public class MasterController {
 		viewModel.addAttribute("currentUser", currentUser);
 		return "show.jsp";
 	}
+	
 	@PostMapping("/events/{id}")
 	public String addMessage(@RequestParam("event")Event event, @RequestParam("host")User host, @RequestParam("messageContent")String messageInput, @PathVariable("id")Long eventId) {
 		Message newMessage = new Message();
@@ -170,6 +179,7 @@ public class MasterController {
 		this.mService.createEntry(newMessage);
 		return "redirect:/events/"+eventId;
 	}
+	
 	@GetMapping("/logOutUser")
 	public String logOut(HttpSession session) {
 		session.invalidate();

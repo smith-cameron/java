@@ -117,11 +117,10 @@
 				<div class="formGroup">
 					<form:label path="eventState">State:</form:label>
 					<form:select class="formInput" path="eventState">
-						<form:option value="CA">Californina</form:option>
-						<form:option value="OR">Oregon</form:option>
-						<form:option value="AZ">Arizona</form:option>
-						<form:option value="CO">Colorado</form:option>
-						<form:option value="TX">Texas</form:option>
+						<form:option value="null" selected="True" disabled="True">Select One</form:option>
+						<c:forEach items="${theStates}" var="state">
+							<form:option value="${state}">${state}</form:option>
+						</c:forEach>
 					</form:select>
 				</div>
 	    	<input id="button" type="submit" value="Create Event"/>
