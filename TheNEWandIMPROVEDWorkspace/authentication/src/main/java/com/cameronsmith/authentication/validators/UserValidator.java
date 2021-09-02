@@ -19,10 +19,10 @@ public class UserValidator {
 		User user = (User) target;
 		
 		if(!user.getPassword().equals(user.getConfirmPassword())) {
-			errors.rejectValue("password", "Match", "Hey! Passwords Do Not Match.");
+			errors.rejectValue("password", "Match", "Passwords Do Not Match.");
 		}
 		if(this.uRepo.existsByEmail(user.getEmail())) {
-			errors.rejectValue("email", "unique", "Hey! Email Already In Database.");
+			errors.rejectValue("email", "unique", "Email Already Exists In Database.");
 		}
 	}
 }
