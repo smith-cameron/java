@@ -126,13 +126,17 @@ public class MainController {
 		if(ideaCreator != currentUser) {
 			return "redirect:/welcome";
 		}
-		viewModel.addAttribute("idea", ideaToEdit);
+		viewModel.addAttribute("thisIdea", ideaToEdit);
 		return "edit.jsp";
 	}
 	@PostMapping("/idea/{id}/edit")
-	public String editIdea(@PathVariable("id")Long ideaId,@ModelAttribute("idea")Idea ideaInput, Model viewModel, HttpSession session) {
+	public String editIdea(@Valid @ModelAttribute("idea")Idea ideaInput, BindingResult result, @PathVariable("id")Long ideaId, Model viewModel, HttpSession session) {
 		Idea ideaToEdit = this.iService.getById(ideaId);
-		viewModel.addAttribute("idea", ideaToEdit);
+		viewModel.addAttribute("thisIdea", ideaToEdit);
+		if (result.hasErrors()) {
+			viewModel.addAttribute("thisIdea", ideaToEdit);
+			return "edit.jsp";
+		}
 		this.iService.createEntry(ideaInput);
 		return "redirect:/welcome";
 	}

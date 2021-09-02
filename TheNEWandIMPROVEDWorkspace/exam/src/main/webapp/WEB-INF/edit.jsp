@@ -13,17 +13,16 @@
 </head>
 <body>
 	<t:wrapper>
-		<h1 id="head">${idea.ideaContent}</h1>
-		
-		<form:form id="inputForm" action="/idea/${idea.id}/edit" method="post" modelAttribute="idea">
-		        <form:hidden value="${idea.ideaCreator.id}" path="ideaCreator"/>
+		<h1 id="head">${thisIdea.ideaContent}</h1>
+		<a id="deleteLink" href="/idea/${thisIdea.id}/delete">Delete</a>
+		<form:form id="inputForm" action="/idea/${thisIdea.id}/edit" method="post" modelAttribute="idea">
+		        <form:hidden value="${thisIdea.ideaCreator.id}" path="ideaCreator"/>
 		        <form:errors class="validation" path="ideaContent"/>
 			<div class="formGroup">
-		        <form:input class="formInput" path="ideaContent" value="${idea.ideaContent}"/>
+		        <form:input class="formInput" path="ideaContent" value="${thisIdea.ideaContent}"/>
 		    </div>
 	    	<input id="button" type="submit" value="Submit"/>
 			</form:form>
-			<a id="deleteLink" href="/idea/${idea.id}/delete">Delete</a>
 	</t:wrapper>
 </body>
 </html>
