@@ -1,4 +1,3 @@
-
 public class ObjectMasterTest {
 
 	public static void main(String[] args) {
@@ -49,7 +48,7 @@ public class ObjectMasterTest {
 		Samurai.howMany();
 		Ninja.howMany();
 		Wizard.howMany();
-		
+
 	}
 
 }

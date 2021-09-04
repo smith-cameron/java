@@ -1,4 +1,3 @@
-
 public class Wizard extends Human{
 	private int defIntelligence = 8;
 	private int defHealth = 50;
@@ -10,15 +9,19 @@ public class Wizard extends Human{
 		this.intelligence = defIntelligence;
 		count += 1;
 	}
+
 	public void heal(Human target) {
 		target.health += this.intelligence;
 	}
+
 	public void fireball(Human victim) {
 		victim.health -= this.intelligence*3;
 	}
+
 	public static void howMany() {
 		System.out.println("Total Wizards: "+count);
 	}
+
 	public void displayStats() {
 		int health = this.health;
 		int strength = this.strength;
