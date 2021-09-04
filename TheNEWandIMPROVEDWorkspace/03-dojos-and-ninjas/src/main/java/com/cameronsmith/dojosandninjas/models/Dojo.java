@@ -20,6 +20,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @ Entity
 @Table(name="dojos")
 public class Dojo {
+//	Attributes -----------------------
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
@@ -38,16 +39,17 @@ public class Dojo {
 	}
 	@NotBlank
 	private String name;
+//	Table Relationships -----------------------
 	@OneToMany(mappedBy="dojo", fetch = FetchType.LAZY)
     private List<Ninja> ninjas;
-	
+//	Constructors -----------------------
 	public Dojo() {
 		
 	}
 	public Dojo(String input) {
 		this.name=input;
 	}
-	
+//	Getters & Setters -----------------------
 	public Long getId() {
 		return this.id;
 	}

@@ -18,8 +18,10 @@
 		<div id="inputForm">
 			<form action="/" method="post">
 			<p id="searchHead">Find Dojo by ID</p>
-			<input type="number" name="id" min=1 max=9>
+			<c:choose>
+			<input type="number" name="id">
 			<input id="searchButton" type="submit" value="Search"/>
+			</c:choose>
 			</form>
 		</div>
 	</div>

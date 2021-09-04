@@ -25,6 +25,7 @@ public class MainController {
 	private DojoService dService;
 	@Autowired
 	private NinjaService nService;
+	
 	@GetMapping("/")
 	public String index() {
 		return "index.jsp";		

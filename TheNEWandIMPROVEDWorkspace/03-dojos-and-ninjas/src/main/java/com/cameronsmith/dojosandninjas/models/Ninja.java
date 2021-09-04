@@ -14,6 +14,9 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -39,8 +42,8 @@ public class Ninja {
 	private String firstName;
 	@NotBlank
 	private String lastName;
-//	@NotNull
-//	@Size(min=1, max=150)
+	@NotNull
+	@Past(message = "Must be born to be a student")
 	private int age;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="dojo_id")
@@ -49,11 +52,11 @@ public class Ninja {
     public Ninja() {
         
     }
-	public Ninja(String firstname, String lastname, int age) {
-		this.firstName=firstname;
-		this.lastName=lastname;
-		this.age=age;
-	}
+//	public Ninja(String firstname, String lastname, int age) {
+//		this.firstName=firstname;
+//		this.lastName=lastname;
+//		this.age=age;
+//	}
 	
 	public Long getId() {
 		return this.id;

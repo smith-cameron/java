@@ -19,10 +19,10 @@ public class NinjaService {
 	public Ninja createEntry(Ninja newEntry) {
 		return this.nRepo.save(newEntry);
 	}
-	public Ninja createEntry(String firstname, String lastname, int age) {
-		Ninja newEntry = new Ninja(firstname, lastname, age);
-		return this.nRepo.save(newEntry);
-	}
+//	public Ninja createEntry(String firstname, String lastname, int age) {
+//		Ninja newEntry = new Ninja(firstname, lastname, age);
+//		return this.nRepo.save(newEntry);
+//	}
 	public Ninja getById(Long id) {
 		return this.nRepo.findById(id).orElse(null);
 	}
