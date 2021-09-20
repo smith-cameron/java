@@ -1,8 +1,6 @@
 package com.cameronsmith.driverslicense.controllers;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.validation.Valid;
