@@ -1,4 +1,3 @@
-import java.util.Arrays;
 
 class FizzBuzz{
     public String fizzBuzz(int input){
