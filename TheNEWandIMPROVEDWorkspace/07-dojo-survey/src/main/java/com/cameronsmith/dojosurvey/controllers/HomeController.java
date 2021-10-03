@@ -14,11 +14,15 @@ public class HomeController {
 		return input.equals("Java");
 	}
 	@RequestMapping("/")
-	public String index() {
+	public String index(Model viewModel) {
+		String[] locations = {"Burbank", "San Jose", "Tulsa", "Seattle", "Oakland", "Chicago", "Miami", "New York"};
+		String[] languages = {"Java", "Ruby", "Express", "Python", "JavaScript", "HTML", "CSS", "Fortran"};
+		viewModel.addAttribute("languages", languages);
+		viewModel.addAttribute("locations", locations);
 		return "index.jsp";
 	}
 	@RequestMapping(value="/submit", method=RequestMethod.POST)
-	public String submit(@RequestParam(value="username") String username, @RequestParam(value="locationInput") String location, @RequestParam(value="languageInput") String language, @RequestParam(value="commentInput") String comment, HttpSession session) {
+	public String results(@RequestParam(value="username") String username, @RequestParam(value="locationInput") String location, @RequestParam(value="languageInput") String language, @RequestParam(value="commentInput") String comment, HttpSession session) {
 		if(langPreferance(language)) {
 			session.setAttribute("username", username);
 			return "redirect:/java";
@@ -27,18 +31,15 @@ public class HomeController {
 		session.setAttribute("location", location);
 		session.setAttribute("language", language);
 		session.setAttribute("comment", comment);
+		System.out.println((String) session.getAttribute("language"));
 		return "redirect:/results";
 	}
 	@RequestMapping(value="/results", method=RequestMethod.GET)
 	public String results(HttpSession session, Model viewModel) {
-		String username = (String) session.getAttribute("username");
-		String location = (String) session.getAttribute("location");
-		String language = (String) session.getAttribute("language");
-		String comment = (String) session.getAttribute("comment");
-		 viewModel.addAttribute("username", username);
-		 viewModel.addAttribute("location", location);
-		 viewModel.addAttribute("language", language);
-		 viewModel.addAttribute("comment", comment);
+		 viewModel.addAttribute("username", (String) session.getAttribute("username"));
+		 viewModel.addAttribute("location", (String) session.getAttribute("location"));
+		 viewModel.addAttribute("language", (String) session.getAttribute("language"));
+		 viewModel.addAttribute("comment", (String) session.getAttribute("comment"));
 		return "/results.jsp";
 	}
 	@RequestMapping("/java")
