@@ -19,6 +19,14 @@
 				<p class="qDisplayTag">${tag.subject}</p>
 			</c:forEach>
 		</div>
+		<form id="inputForm" action="" method="post">
+		<input type="hidden" name="${question.id}">
+	    <div class="formDiv">
+	        <label class="formLabel" for="tags">Add a Tag:</label>
+	        <input id="tagInput" type="text" name="tags"/>
+	    </div>
+	    <input id="button" type="submit" value="ADD"/>
+		</form>
 		<table id="answerDisplay">
 		<thead>
 			<tr>

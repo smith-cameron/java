@@ -62,10 +62,9 @@ public class MainController {
 			return "redirect:/questions/new";
 		}
 		//take tagsInput and split into single strings and add to ArrayList
-		ArrayList<Tag>tagsOutput1 = this.mService.splitTagString(tagsInput.toLowerCase());
 		//System.out.println(tagsOutput);
 		//Create Question object with private tag list
-		this.mService.createQuestion(questionInput, tagsOutput1);
+		this.mService.createQuestion(questionInput, tagsOutput);
 		return "redirect:/dashboard";
 	}
 	@GetMapping("/question/{id}")
@@ -82,8 +81,7 @@ public class MainController {
 		if (result.hasErrors()) {
 			return "/showQuestion.jsp";
 		}
-		Answer newAnswer = answerInput;
-		this.mService.createAnswer(newAnswer.getAnswer(), thisQuestion);
+		this.mService.createAnswer(answerInput.getAnswer(), thisQuestion);
 		//this.mService.addAnswerToQuestion(answerInput, thisQuestion);
 		return "redirect:/question/{id}";
 	}

@@ -42,7 +42,7 @@ public class Question {
 	
 	
 	private String question;
-	@ManyToMany( fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToMany( fetch = FetchType.LAZY)
     @JoinTable(
         name = "questions_tags", 
         joinColumns = @JoinColumn(name = "question_id"), 
