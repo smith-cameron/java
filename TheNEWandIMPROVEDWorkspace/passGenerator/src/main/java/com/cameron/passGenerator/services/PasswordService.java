@@ -43,6 +43,14 @@ public class PasswordService {
         Collections.shuffle(output);
         return output;
 	}
+	public ArrayList<Character> lettersCAP(){
+		ArrayList<Character> output = new ArrayList<Character>();
+        for(char alph = 'A'; alph <= 'Z'; ++alph){
+        	output.add(alph);
+        }
+        Collections.shuffle(output);
+        return output;
+	}
 	public ArrayList<Integer> numbers(){
 		ArrayList<Integer> output = new ArrayList<Integer>();
         for(int i = 0; i < 10; i++){
@@ -64,27 +72,38 @@ public class PasswordService {
         ArrayList<Character> alphabet = this.letters();
         ArrayList<Integer> numbers = this.numbers();
         ArrayList<Character> symbols = this.symbols();
+        ArrayList<Character> alphCap = this.lettersCAP();
+        ArrayList<Character> output = this.lettersCAP();
         String output = "";
         Random randValue = new Random();
-        for(int i = 0; i < max-1; i++){
-        	if(i % 2 == 0 ) {
-        		output += numbers.get(randValue.nextInt(numbers.size()));
-        	}
-        	else if(i % 3 == 0) {
-        		output += alphabet.get(randValue.nextInt(alphabet.size()));
-        	}
-        	else if(i % 5 == 0) {
-        		output += symbols.get(randValue.nextInt(symbols.size()));
-        	}
-        	else {
-        		String capitalized = "";
-        		capitalized += alphabet.get(randValue.nextInt(alphabet.size()));
-        		output += capitalized.toUpperCase();
-        	}
-        }
-        output += symbols.get(randValue.nextInt(symbols.size()));
-        System.out.println("Service: "+output);
-        return output;
+        System.out.println("num: "+randValue.nextInt(9));
+        System.out.println("alph: "+randValue.nextInt(25));
+        System.out.println("sym: "+randValue.nextInt(6));
+        System.out.println("cap: "+randValue.nextInt(25));
+        System.out.println("----------------------");
+//        for(int i = 1; i < max-1; i++){
+//        	
+//        }
+//        	if(i % 2 == 0 ) {
+//        		output += numbers.get(randValue.nextInt(i));
+//        	}
+//        	else if(i % 3 == 0) {
+//        		output += alphabet.get(randValue.nextInt(i));
+//        		
+//        	}
+//        	else if(i % 5 == 0) {
+//        		output += symbols.get(randValue.nextInt(i));
+//        	}
+//        	else {
+//        		String capitalized = "";
+//        		capitalized += alphabet.get(randValue.nextInt(i));
+//        		output += capitalized.toUpperCase();
+//        	}
+//        }
+//        output += symbols.get(randValue.nextInt(symbols.size()));
+//        System.out.println("Service: "+output);
+        
+		return output;
     }
 	
 }
