@@ -2,6 +2,7 @@ package com.cameronsmith.eventsbeltreviewer.models;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -51,9 +52,7 @@ public class User {
 	@NotBlank(message="First Name Required")
 	@Size(min=2, max=255, message="Must be 2-255 characters")
 	private String firstName;
-	@NotBlank(message="Last Name Required")
-	@Size(min=2, max=255, message="Must be 2-255 characters")
-	private String lastName;
+	private Optional<@Size(min=2, max=255, message="Must be 2-255 characters") String> lastName = Optional.empty();
 	@NotBlank(message="Location Required")
 	@Size(min=2, message="Must be more than 2 characters")
 	private String location;
@@ -79,94 +78,93 @@ public class User {
         inverseJoinColumns = @JoinColumn(name = "event_id")
     )
     private List<Event> eventsAttending;
-	
+
 	public User() {
-		
-	}
-	public User(String email, String firstName, String lastName, String location, String state, String password, String confirmPassword) {
-		this.email = email;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.location = location;
-		this.state = state;
-		this.password = password;
-		this.confirmPassword = confirmPassword;
 	}
 	
+//	public User(String email, String firstName, String lastName, String location, String state, String password, String confirmPassword) {
+//		this.email = email;
+//		this.firstName = firstName;
+//		this.lastName = lastName;
+//		this.location = location;
+//		this.state = state;
+//		this.password = password;
+//		this.confirmPassword = confirmPassword;
+//	}
 	public Long getId() {
-		return this.id;
+		return id;
 	}
 	public void setId(Long id) {
 		this.id = id;
 	}
 	public Date getCreatedAt() {
-		return this.createdAt;
+		return createdAt;
 	}
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
 	}
 	public Date getUpdatedAt() {
-		return this.updatedAt;
+		return updatedAt;
 	}
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
 	public String getEmail() {
-		return this.email;
+		return email;
 	}
 	public void setEmail(String email) {
-		this.email = email.toLowerCase();
+		this.email = email;
 	}
 	public String getFirstName() {
-		return this.firstName;
+		return firstName;
 	}
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-	public String getLastName() {
-		return this.lastName;
+	public Optional<@Size(min = 2, max = 255, message = "Must be 2-255 characters") String> getLastName() {
+		return lastName;
 	}
 	public void setLastName(String lastName) {
-		this.lastName = lastName;
+		this.lastName = Optional.ofNullable(lastName);
 	}
 	public String getLocation() {
-		return this.location;
+		return location;
 	}
 	public void setLocation(String location) {
 		this.location = location;
 	}
 	public String getState() {
-		return this.state;
+		return state;
 	}
 	public void setState(String state) {
 		this.state = state;
 	}
 	public String getPassword() {
-		return this.password;
+		return password;
 	}
 	public void setPassword(String password) {
 		this.password = password;
 	}
 	public String getConfirmPassword() {
-		return this.confirmPassword;
+		return confirmPassword;
 	}
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
 	}
-	public List<Message> getUserMessages() {
-		return this.userMessages;
-	}
-	public void setUserMessages(List<Message> userMessages) {
-		this.userMessages = userMessages;
-	}
 	public List<Event> getEventsCreated() {
-		return this.eventsCreated;
+		return eventsCreated;
 	}
 	public void setEventsCreated(List<Event> eventsCreated) {
 		this.eventsCreated = eventsCreated;
 	}
+	public List<Message> getUserMessages() {
+		return userMessages;
+	}
+	public void setUserMessages(List<Message> userMessages) {
+		this.userMessages = userMessages;
+	}
 	public List<Event> getEventsAttending() {
-		return this.eventsAttending;
+		return eventsAttending;
 	}
 	public void setEventsAttending(List<Event> eventsAttending) {
 		this.eventsAttending = eventsAttending;

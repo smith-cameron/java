@@ -77,9 +77,9 @@ public class MasterController {
 		String currentState = currentUser.getState();
 		List<Event> inStateEvents = this.eService.getEventsByUserState(currentState);
 		List<Event> otherStateEvents = this.eService.getOtherEventsByUserState(currentState);
+		viewModel.addAttribute("currentUser", currentUser);
 		viewModel.addAttribute("theStates", stateList);
 		viewModel.addAttribute("event", newEvent);
-		viewModel.addAttribute("currentUser", currentUser);
 		viewModel.addAttribute("inStateEvents", inStateEvents);
 		viewModel.addAttribute("otherStateEvents", otherStateEvents);
 		return "displayAll.jsp";

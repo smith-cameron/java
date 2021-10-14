@@ -48,6 +48,7 @@ class Gorilla extends Mammal{
 	public void eatBananas() {
 		if(this.lifeCheck()){
 			int eLev = this.getEnergyLevel();
+			
 			eLev += 10;
 			this.setEnergyLevel(eLev);
 			System.out.println("Gorilla eats a banana. Energy now: "+eLev);

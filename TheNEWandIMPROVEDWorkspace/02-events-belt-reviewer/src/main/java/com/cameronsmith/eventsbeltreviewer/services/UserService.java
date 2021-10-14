@@ -21,12 +21,12 @@ public class UserService {
 		newEntry.setPassword(hash);
 		return this.uRepo.save(newEntry);
 	}
-	public User createEntry(String email, String firstName, String lastName, String location, String state, String password, String confirmPassword) {
-		User newEntry = new User(email, firstName, lastName, location, state, password,confirmPassword);
-		String hash = BCrypt.hashpw(newEntry.getPassword(), BCrypt.gensalt());
-		newEntry.setPassword(hash);
-		return this.uRepo.save(newEntry);
-	}
+//	public User createEntry(String email, String firstName, String lastName, String location, String state, String password, String confirmPassword) {
+//		User newEntry = new User(email, firstName, lastName, location, state, password,confirmPassword);
+//		String hash = BCrypt.hashpw(newEntry.getPassword(), BCrypt.gensalt());
+//		newEntry.setPassword(hash);
+//		return this.uRepo.save(newEntry);
+//	}
 	public boolean authenticateUser(String email, String password) {
 		User user = this.uRepo.findByEmail(email);
 		if(user == null) {
