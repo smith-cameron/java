@@ -26,6 +26,7 @@
 				<th class="tHead">City</th>
 				<th class="tHead">State</th>
 				<th class="tHead">Dormitory</th>
+				<th class="tHead">Actions</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -36,6 +37,7 @@
 				<td class="tData">${student.contact.city}</td>
 				<td class="tData">${student.contact.state}</td>
 				<td class="tData">${student.dorm.name}</td>
+				<td class="tData"><a class="tLink" href="/student/${student.id}/edit">Edit</a></td>
 			</tr>
 		</tbody>
 	</table>

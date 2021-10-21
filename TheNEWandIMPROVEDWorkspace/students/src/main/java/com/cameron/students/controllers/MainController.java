@@ -108,11 +108,21 @@ public class MainController {
 		viewModel.addAttribute("allStacks", allStacks);
 		return "ShowStudent.jsp";
 	}
+	@GetMapping("/student/{id}/edit")
+	public String editStudent(@PathVariable("id")Long studentId) {
+		
+		return "EditStudent.jsp";
+	}
 	@PostMapping("/dorms/{id}/add")
 	public String addDorm(@RequestParam("dorm")Long dormId, @PathVariable("id")Long studentId) {
 		Dorm dormToAdd = this.dService.getById(dormId);
 		this.sService.setDorm(studentId, dormToAdd);
 		return "redirect:/students";
+	}
+	@GetMapping("/dorm/{id}")
+	public String deleteDorm(@PathVariable("id")Long dormId) {
+		this.dService.deleteById(dormId);
+		return "redirect:/dorms";
 	}
 	@PostMapping("/dorms/{id}/remove")
 	public String removeDorm(@PathVariable("id")Long studentId) {

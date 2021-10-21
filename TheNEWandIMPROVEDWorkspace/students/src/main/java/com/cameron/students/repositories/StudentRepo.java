@@ -11,5 +11,4 @@ import com.cameron.students.models.Student;
 @Repository
 public interface StudentRepo extends CrudRepository<Student, Long>{
 	List<Student> findAll();
-	List<Stack> findByStacksNotContaining();
 }

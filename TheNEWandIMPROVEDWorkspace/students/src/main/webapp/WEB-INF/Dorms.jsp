@@ -30,10 +30,16 @@
 	<div id="dormTable">
 	<h2>All Dormitories</h2>
 		<table>
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th></th>
+				</tr>
 			<tbody>
 				<c:forEach items="${dorms}" var="dorm">
 				<tr>
 					<td class="tData"><a class="tLink" href="/dorms/${dorm.id}">${dorm.name}</a></td>
+					<td class="tData"><a class="tLink" href="/dorm/${dorm.id}">Delete</a></td>
 				</tr>
 				</c:forEach>
 			</tbody>
