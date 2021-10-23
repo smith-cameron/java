@@ -52,6 +52,7 @@ public class User {
 	@NotBlank(message="First Name Required")
 	@Size(min=2, max=255, message="Must be 2-255 characters")
 	private String firstName;
+//	private String lastName;
 	private Optional<@Size(min=2, max=255, message="Must be 2-255 characters") String> lastName = Optional.empty();
 	@NotBlank(message="Location Required")
 	@Size(min=2, message="Must be more than 2 characters")
@@ -121,7 +122,7 @@ public class User {
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-	public Optional<@Size(min = 2, max = 255, message = "Must be 2-255 characters") String> getLastName() {
+	public Optional<String> getLastName() {
 		return lastName;
 	}
 	public void setLastName(String lastName) {
