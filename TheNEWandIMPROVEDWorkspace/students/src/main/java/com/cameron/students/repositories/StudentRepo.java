@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.cameron.students.models.Stack;
 import com.cameron.students.models.Student;
 
 @Repository

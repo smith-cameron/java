@@ -60,13 +60,7 @@ public class Student {
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="dorm_id")
     private Dorm dorm;
-	@ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-        name = "stack_student", 
-        joinColumns = @JoinColumn(name = "student_id"), 
-        inverseJoinColumns = @JoinColumn(name = "stack_id")
-    )
-    private List<Stack> stacks;
+	
 //	Constructors -----------------------------------------------------------
 	public Student() {
 		
@@ -120,12 +114,7 @@ public class Student {
 	public void setDorm(Dorm dorm) {
 		this.dorm = dorm;
 	}
-	public List<Stack> getStacks() {
-		return stacks;
-	}
-	public void setStacks(List<Stack> stacks) {
-		this.stacks = stacks;
-	}
+	
 	
 	
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cameron.students.models.Contact;
+import com.cameron.students.models.Student;
 import com.cameron.students.repositories.ContactRepo;
 
 @Service
@@ -28,5 +29,7 @@ public class ContactService {
 	public void deleteById(Long id) {
 		this.cRepo.deleteById(id);
 	}
-
+	public Contact getByStudent(Student s) {
+		return this.cRepo.findAllByStudent(s);
+	}
 }
