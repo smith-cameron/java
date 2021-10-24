@@ -13,6 +13,27 @@
 <body>
 <div id="wrapper">
 	<a class="link" href="/students">Home</a>
+	<h1 id="head">Edit ${student.firstName} ${student.lastName}</h1>
+	<div id="inputForm">
+		<form:form id="inputForm" action="/student/${student.id}/edit" method="post" modelAttribute="student">
+		        <form:errors class="validation" path="firstName"/>
+			<div class="formGroup">
+		        <form:label class="formLabel" path="firstName">First Name:</form:label>
+		        <form:input class="formInput" path="firstName"/>
+		    </div>
+		        <form:errors class="validation" path="lastName"/>
+		    <div class="formGroup">
+		        <form:label class="formLabel" path="lastName">Last Name:</form:label>
+		        <form:input class="formInput" path="lastName"/>
+		    </div>
+		        <form:errors class="validation" path="age"/>
+		    <div class="formGroup">
+		        <form:label class="formLabel" path="age">Age:</form:label>
+		        <form:input class="formInput" path="age"/>
+		    </div>
+	    	<input id="button" type="submit" value="Submit"/>
+			</form:form>
+	</div>
 </div>
 </body>
 </html>

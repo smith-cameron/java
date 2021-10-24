@@ -12,14 +12,12 @@
 </head>
 <body>
 <div id="wrapper">
-	<a class="link" href="/dorms">Dormitories</a>
-	<a class="link" href="/students/new">New Student</a>
-	<a class="link" href="/contacts/new">New Contact</a>
 	<a class="link" href="/students">Home</a>
 	<h1 id="head">${student.firstName} ${student.lastName}'s Info</h1>
 	<table id="displayTable">
 		<thead>
 			<tr>
+				<th class="tHead">ID</th>
 				<th class="tHead">Name</th>
 				<th class="tHead">Age</th>
 				<th class="tHead">Address</th>
@@ -31,6 +29,7 @@
 		</thead>
 		<tbody>
 			<tr>
+				<td class="tData">${student.id}</td>
 				<td class="tData">${student.firstName} ${student.lastName}</td>
 				<td class="tData">${student.age}</td>
 				<td class="tData">${student.contact.address}</td>
@@ -42,30 +41,88 @@
 		</tbody>
 	</table>
 	<div class="formGroup">
-		<form id="inputForm" action="/stack/${student.id}/add" method="post">
-			<select class="formInput" name="dorm">
-     		<c:forEach items="${allDorms}" var="dorm">
-     		<c:choose>
-     		<c:when test="${student.dorm.id != dorm.id }">
-					<option value="${dorm.id}">${dorm.name}</option>
-		    </c:when>
-		    </c:choose>
-		    </c:forEach>
-			</select>
-			<input id="submitButton" type="submit" value="Submit"/>
-		</form>
+		<c:choose>
+		<c:when test="${student.dorm != null}">
+		<div class="formGroup">
+			<form action="/dorms/${student.id}/remove" method="post">
+				<input type="submit" value="Remove Dormitory"/>
+			</form>
+		</div>
+		</c:when>
+		<c:otherwise>
+		<div class="formGroup">
+			<form id="inputForm" action="/dorms/${student.id}/add" method="post">
+				<select class="formInput" name="dorm">
+	     		<c:forEach items="${dorms}" var="dorm">
+	     		<c:choose>
+	     		<c:when test="${student.dorm.id != dorm.id }">
+						<option value="${dorm.id}">${dorm.name}</option>
+			    </c:when>
+			    </c:choose>
+			    </c:forEach>
+				</select>
+				<input id="submitButton" type="submit" value="Add"/>
+			</form>
+		</div>
+		</c:otherwise>
+		</c:choose>
 	</div>
-	<div id="dormTable">
-	<h2>Your Schedule</h2>
-		<table>
-			<tbody>
-				<c:forEach items="${stacks}" var="stack">
-				<tr>
-					<td class="tData"><a class="tLink" href="/stack/${stack.id}">${stack.name}</a></td>
-				</tr>
-				</c:forEach>
-			</tbody>
-		</table>
+	<h1 id="head">${student.firstName}'s Contact Info</h1>
+	<div class="formGroup">
+		<c:choose>
+		<c:when test="${myContact != null}">
+		<div id="inputForm">
+			<form:form id="inputForm" action="/contact/${student.id}/edit" method="post" modelAttribute="myContact">
+			     <form:hidden path="student" value="${student.id}"/>
+				<div class="formGroup">
+					
+				</div>
+			        <form:errors class="validation" path="address"/>
+				<div class="formGroup">
+			        <form:label class="formLabel" path="address">Address:</form:label>
+			        <form:input class="formInput" path="address"/>
+			    </div>
+			        <form:errors class="validation" path="city"/>
+			    <div class="formGroup">
+			        <form:label class="formLabel" path="city">City:</form:label>
+			        <form:input class="formInput" path="city"/>
+			    </div>
+			        <form:errors class="validation" path="state"/>
+			    <div class="formGroup">
+			        <form:label class="formLabel" path="state">State:</form:label>
+			        <form:input class="formInput" path="state"/>
+			    </div>
+		    	<input id="button" type="submit" value="Submit"/>
+			</form:form>
+		</div>
+		</c:when>
+		<c:otherwise>
+			<div id="inputForm">
+			<form:form id="inputForm" action="/contact/${student.id}/new" method="post" modelAttribute="newContact">
+			     <form:hidden path="student" value="${student.id}"/>
+				<div class="formGroup">
+					
+				</div>
+			        <form:errors class="validation" path="address"/>
+				<div class="formGroup">
+			        <form:label class="formLabel" path="address">Address:</form:label>
+			        <form:input class="formInput" path="address"/>
+			    </div>
+			        <form:errors class="validation" path="city"/>
+			    <div class="formGroup">
+			        <form:label class="formLabel" path="city">City:</form:label>
+			        <form:input class="formInput" path="city"/>
+			    </div>
+			        <form:errors class="validation" path="state"/>
+			    <div class="formGroup">
+			        <form:label class="formLabel" path="state">State:</form:label>
+			        <form:input class="formInput" path="state"/>
+			    </div>
+		    	<input id="button" type="submit" value="Submit"/>
+			</form:form>
+		</div>
+		</c:otherwise>
+		</c:choose>
 	</div>
 </div>
 </body>

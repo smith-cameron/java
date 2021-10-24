@@ -12,8 +12,6 @@
 </head>
 <body>
 <div id="wrapper">
-	<a class="link" href="/contacts/new">New Contact</a>
-	<a class="link" href="/students/new">New Student</a>
 	<a class="link" href="/students">Home</a>
 	<h1 id="head">Dormitories</h1>
 	<div id="dormForm">

@@ -13,8 +13,6 @@
 <body>
 <div id="wrapper">
 <a class="link" href="/dorms">Dormitories</a>
-	<a class="link" href="/students/new">New Student</a>
-	<a class="link" href="/contacts/new">New Contact</a>
 	<a class="link" href="/students">Home</a>
 	<h1 id="head">${dorm.name} Dormitory</h1>
 	<h2 class="subHead">Students:</h2>
