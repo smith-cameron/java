@@ -33,7 +33,7 @@
 					<form:errors class="validations" path="password"/>
 				<div class="formGroup">
 					<form:label path="password">Password:</form:label>
-					<form:input class="formInput" type="password" path="password"/>
+					<form:input class="formInput" id="password" type="password" path="password"/>
 					<ul id=passReq>
 						<li id=listHead>Password Must Contain:</li>
 						<li>at least 8 characters and at most 20 characters</li>
@@ -68,5 +68,6 @@
 			</form>
 		</div>
 	</div>
+	
 </body>
 </html>

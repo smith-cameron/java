@@ -11,7 +11,7 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-//import javax.validation.constraints.Email;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -39,8 +39,8 @@ public class User {
 		this.updatedAt = new Date();
 	}
 	@NotBlank(message="Email Required")
-//	@Email(message="Invalid Email")
-	@Pattern(regexp=".[A-Za-z0-9._%+-]+@[A-Za-z0-9.-].+\\..[a-z]{2,6}$", message="Invalid Email Input")
+	@Email(message="Invalid Email")
+//	@Pattern(regexp=".[A-Za-z0-9._%+-]+@[A-Za-z0-9.-].+\\..[a-z]{2,6}$", message="Invalid Email Input")
 	private String email;
 	@NotBlank(message="First Name Required")
 	@Size(min=2, max=255, message="Must be 2-255 characters")
@@ -49,8 +49,8 @@ public class User {
 	@Size(min=2, max=255, message="Must be 2-255 characters")
 	private String lastName;
 	@NotBlank(message="Password Required")
-	@Size(min=8, max=20)
-	@Pattern(regexp = "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%&*()-+=^])(?=\\S+$)", message="Invalid Password Input")
+//	@Size(min=8, max=20)
+	@Pattern(regexp = "^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%&*()-+=^])(?=\\\\S+$).{8,20}$", message="Invalid Password Input")
 	private String password;
 	@NotBlank(message="Password Comparison Required")
 	@Transient
