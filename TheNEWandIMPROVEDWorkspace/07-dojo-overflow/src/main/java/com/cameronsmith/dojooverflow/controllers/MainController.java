@@ -68,7 +68,7 @@ public class MainController {
 		return "redirect:/dashboard";
 	}
 	@GetMapping("/question/{id}")
-	public String showQuestionInfo(@ModelAttribute("answerInput")Answer answerInput, @PathVariable("id")Long id, Model viewModel, BindingResult result) {
+	public String showQuestionInfo(@ModelAttribute("answerInput")Answer answerInput, @PathVariable("id")Long id, Model viewModel) {
 		Question thisQuestion = mService.getQuestionById(id);
 		
 		viewModel.addAttribute("question", thisQuestion);
@@ -79,6 +79,7 @@ public class MainController {
 		Question thisQuestion = mService.getQuestionById(id);
 		viewModel.addAttribute("question", thisQuestion);
 		if (result.hasErrors()) {
+			viewModel.addAttribute("question", thisQuestion);
 			return "/showQuestion.jsp";
 		}
 		this.mService.createAnswer(answerInput.getAnswer(), thisQuestion);

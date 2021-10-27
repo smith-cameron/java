@@ -84,10 +84,10 @@ public class MainService {
 		return this.aRepo.save(toUpdate);
 	}
 	//Create with overloaded constructor
-	public Answer createAnswer(String answer) {
-		Answer newEntry = new Answer(answer);
-		return this.aRepo.save(newEntry);
-	}
+//	public Answer createAnswer(String answer) {
+//		Answer newEntry = new Answer(answer);
+//		return this.aRepo.save(newEntry);
+//	}
 	public Answer createAnswer(String answer, Question question) {
 		Answer newEntry = new Answer(answer,question);
 		return this.aRepo.save(newEntry);

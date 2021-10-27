@@ -17,7 +17,7 @@ import javax.validation.constraints.NotBlank;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-@ Entity
+@Entity
 @Table(name="dojos")
 public class Dojo {
 //	Attributes -----------------------
@@ -37,7 +37,7 @@ public class Dojo {
 	protected void onUpdate(){
 		this.updatedAt = new Date();
 	}
-	@NotBlank
+	@NotBlank(message="Name required.")
 	private String name;
 //	Table Relationships -----------------------
 	@OneToMany(mappedBy="dojo", fetch = FetchType.LAZY)
