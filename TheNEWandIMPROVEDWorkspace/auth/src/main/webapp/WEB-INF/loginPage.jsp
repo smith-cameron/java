@@ -10,18 +10,28 @@
 <title>Login Page</title>
 </head>
 <body>
-    <h1>Login</h1>
-    <form method="POST" action="/login">
-        <p>
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username"/>
-        </p>
-        <p>
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password"/>
-        </p>
-        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-        <input type="submit" value="Login!"/>
-    </form>
+    <div id="wrapper">
+		<h1>Login</h1>
+		<h3>or</h3>
+		<h3><a href="/registration">Register</a></h3>
+		<c:if test="${logoutMessage != null}">
+	    	<c:out value="${logoutMessage}"></c:out>
+		</c:if>
+		<c:if test="${errorMessage != null}">
+		    <c:out value="${errorMessage}"></c:out>
+		</c:if>
+		<form method="POST" action="/login">
+		    <p>
+		        <label for="username">Username</label>
+		        <input type="text" id="username" name="username"/>
+		    </p>
+		    <p>
+		        <label for="password">Password</label>
+		        <input type="password" id="password" name="password"/>
+		    </p>
+		    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+		    <input type="submit" value="Login!"/>
+		</form>
+	</div>
 </body>
 </html>

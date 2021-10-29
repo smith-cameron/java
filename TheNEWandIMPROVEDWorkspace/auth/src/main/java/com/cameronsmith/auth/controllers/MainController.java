@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cameronsmith.auth.models.User;
 import com.cameronsmith.auth.services.UserService;
 @Controller
-//@RequestMapping("/")
 public class MainController {
 	@Autowired
 	public UserService uService;
@@ -34,8 +34,14 @@ public class MainController {
         uService.saveWithUserRole(user);
         return "redirect:/login";
     }
-    @GetMapping("/login")
-    public String login() {
+    @RequestMapping("/login")
+    public String login(@RequestParam(value="error", required=false) String error, @RequestParam(value="logout", required=false) String logout, Model model) {
+        if(error != null) {
+            model.addAttribute("errorMessage", "Invalid Credentials, Please try again.");
+        }
+        if(logout != null) {
+            model.addAttribute("logoutMessage", "Logout Successful!");
+        }
         return "loginPage.jsp";
     }
     @RequestMapping(value = {"/", "/home"})
@@ -44,5 +50,10 @@ public class MainController {
         model.addAttribute("currentUser", uService.findByUsername(username));
         return "homePage.jsp";
     }
-    
+    @RequestMapping("/admin")
+    public String adminPage(Principal principal, Model model) {
+        String username = principal.getName();
+        model.addAttribute("currentUser", uService.findByUsername(username));
+        return "adminPage.jsp";
+    }
 }
