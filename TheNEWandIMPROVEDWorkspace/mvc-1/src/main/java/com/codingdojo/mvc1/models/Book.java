@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -25,8 +27,9 @@ public class Book {
     private String description;
     @Size(min = 3, max = 40)
     private String language;
-    @Size(min = 100)
-    private int pages;
+    @NotNull
+    @Min(100)
+    private Integer pages;
     
     @Column(updatable=false)
     @DateTimeFormat(pattern = "MM/dd/yyyy HH:mm:ss")
@@ -42,4 +45,57 @@ public class Book {
     protected void onUpdate(){
         this.updatedAt = new Date();
     }
+//  Constructors ----------------------------------------------
+    public Book() {
+    }
+    public Book(String title, String desc, String lang, int pages) {
+        this.title = title;
+        this.description = desc;
+        this.language = lang;
+        this.pages = pages;
+    }
+//    Getters & Setters ----------------------------------------------
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public String getLanguage() {
+		return language;
+	}
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+	public Integer getPages() {
+		return pages;
+	}
+	public void setPages(Integer pages) {
+		this.pages = pages;
+	}
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+	public Date getUpdatedAt() {
+		return updatedAt;
+	}
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
+	}
 }
+
