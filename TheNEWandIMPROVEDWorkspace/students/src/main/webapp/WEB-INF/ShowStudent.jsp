@@ -45,7 +45,7 @@
 		<c:when test="${student.dorm != null}">
 		<div class="formGroup">
 			<form action="/dorms/${student.id}/remove" method="post">
-				<input type="submit" value="Remove Dormitory"/>
+				<input type="submit" value="Move Dormitories"/>
 			</form>
 		</div>
 		</c:when>

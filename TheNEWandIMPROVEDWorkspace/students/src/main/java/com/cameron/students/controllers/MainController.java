@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cameron.students.models.Contact;
 import com.cameron.students.models.Dorm;
+import com.cameron.students.models.Stack;
 import com.cameron.students.models.Student;
 import com.cameron.students.services.ContactService;
 import com.cameron.students.services.DormService;
@@ -42,17 +43,27 @@ public class MainController {
 		viewModel.addAttribute("allDorms", allDorms);
 		return "index.jsp";									
 	}
-	@GetMapping("/students/new")										
-	public String newStudent(@ModelAttribute("student") Student newStudent){											
-		return "NewStudent.jsp";									
+	@GetMapping("/additions")										
+	public String additions(@ModelAttribute("student") Student newStudent, @ModelAttribute("stack") Stack newStack,  @ModelAttribute("dorm") Dorm newDorm){											
+		return "Additions.jsp";									
 	}
-	@PostMapping("/students/new")
+	@PostMapping("/student/new")
 	public String createStudent(@Valid @ModelAttribute("student") Student newStudent, BindingResult result) {
 		if (result.hasErrors()) {
-			return "NewStudent.jsp";
+			return "Additions.jsp";
 		}
 		this.sService.create(newStudent);
 		return "redirect:/students";
+	}
+//	postmapping for new stack
+	@PostMapping("/dorms/new")
+	public String newDorm(@Valid @ModelAttribute("dorm")Dorm newDorm, BindingResult result, Model viewModel) {
+		if (result.hasErrors()) {
+			viewModel.addAttribute("dorms", this.dService.getAll());
+			return "Dorms.jsp";
+		}
+		this.dService.create(newDorm);
+		return "redirect:/dorms";
 	}
 	@PostMapping("/contact/{id}/new")
 	public String createContact(@Valid @ModelAttribute("newContact") Contact newContact, BindingResult result,@PathVariable("id")Long studentId, Model viewModel) {
@@ -80,15 +91,6 @@ public class MainController {
 	public String allDorms(@ModelAttribute("dorm")Dorm newDorm, Model viewModel) {
 		viewModel.addAttribute("dorms", this.dService.getAll());
 		return "Dorms.jsp";
-	}
-	@PostMapping("/dorms/new")
-	public String newDorm(@Valid @ModelAttribute("dorm")Dorm newDorm, BindingResult result, Model viewModel) {
-		if (result.hasErrors()) {
-			viewModel.addAttribute("dorms", this.dService.getAll());
-			return "Dorms.jsp";
-		}
-		this.dService.create(newDorm);
-		return "redirect:/dorms";
 	}
 	@GetMapping("/dorm/{id}")
 	public String deleteDorm(@PathVariable("id")Long dormId) {
@@ -129,12 +131,17 @@ public class MainController {
 		return "redirect:/students/"+studentId;
 	}
 	@PostMapping("/dorms/{id}/remove")
-	public String removeDorm(@PathVariable("id")Long studentId) {
+	public String removeDormViaForm(@PathVariable("id")Long studentId) {
 		Student student = this.sService.getById(studentId);
 		this.sService.removeDorm(student);
 		
 		return "redirect:/students/"+studentId;
 	}
-	
+	@GetMapping("/{dormId}/{studentId}/remove")
+	public String removeDormViaLink(@PathVariable("studentId")Long studentId,@PathVariable("dormId")Long dormId) {
+		Student student = this.sService.getById(studentId);
+		this.sService.removeDorm(student);
+		return "redirect:/dorms/"+dormId;
+	}
 	
 }

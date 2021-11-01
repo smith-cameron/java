@@ -14,7 +14,7 @@
 <body>
 <div id="wrapper">
 	<a class="link" href="/dorms">Dormitories</a>
-	<a class="link" href="/students/new">New Student</a>
+	<a class="link" href="/additions">Add Entities</a>
 	<h1 id="head">All Students</h1>
 	<table id="displayTable">
 		<thead>
