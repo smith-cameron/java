@@ -1,5 +1,5 @@
 
-public class Bat extends Mammal {
+public class Bat  {
 	private static int defaultEnergyLevel = 300;
 	
 	public Bat() {
