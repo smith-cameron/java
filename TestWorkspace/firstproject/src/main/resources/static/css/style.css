@@ -1,0 +1,28 @@
+@charset "UTF-8";
+#wrapper{
+	border-width: 1px;
+	border-style: dashed;
+	border-color: red;
+	width: 1000px;
+	height: 600px;
+	margin: 0px auto;
+	background: rgb(46,85,143);
+	background: linear-gradient(0deg, rgba(46,85,143,1) 25%, rgba(58,140,230,1) 75%);
+}
+#form{
+	text-align: center;
+	display: inline-block;
+	margin: 50px 0px 0px 403.17px;
+	color: white;
+}
+h1{
+	text-align: center;
+	color: white;
+}
+h2{
+	text-align: center;
+	color: white;
+}
+#color{
+	color: #c0bf01;
+}

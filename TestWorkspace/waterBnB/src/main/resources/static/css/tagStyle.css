@@ -1,0 +1,10 @@
+@charset "ISO-8859-1";
+.navLink{
+	color:coral;
+    margin: 0px 20px;
+    font-size: larger;
+}
+#nav{
+	display:inline-block;
+    margin-left: 80%;
+}

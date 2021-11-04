@@ -1,0 +1,32 @@
+@charset "UTF-8";
+#wrapper{
+	width: 1000px;
+	height: 600px;
+	margin: 0px auto;
+	padding: 30px 0px;
+	background: rgb(103,105,199);
+	background: radial-gradient(circle, rgba(103,105,199,1) 0%, rgba(45,52,115,1) 100%);
+	font-family: Arial;
+	color: white;
+}
+#head{
+	text-align: center;
+	text-decoration: underline;
+	color: black;
+	margin-top: 50px;
+}
+#wallLink{
+	display: inline-block;
+	color: yellow;
+	margin-left: 800px;
+}
+#inputForm{
+	text-align: center;
+	align-items: center;
+}
+.formGroup{
+	margin: 15px;
+}
+.validation{
+	color:yellow;
+}
