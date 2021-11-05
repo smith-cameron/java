@@ -12,6 +12,29 @@
 </head>
 <body>
 	<h1>Welcome to the Admin Page <c:out value="${currentUser.username}"></c:out></h1>
+	<table>
+	<thead>
+		<tr>
+		<th>ID</th>
+		<th>Username</th>
+		<th>password</th>
+		<th>Initialized</th>
+		<th>Updated</th>
+		</tr>
+	</thead>
+	<tbody>
+		<c:forEach items="${allUsers}" var="user">
+		<tr>
+		<td>${user.id}</td>
+		<td>${user.username}</td>
+		<td>${user.password}</td>
+		<td>${user.createdAt}</td>
+		<td>${user.updatedAt}</td>
+		</tr>
+		</c:forEach>
+	</tbody>
+	</table>
+	
 	<form id="logoutForm" method="POST" action="/logout">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <input type="submit" value="Logout!" />

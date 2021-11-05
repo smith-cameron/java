@@ -17,10 +17,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.cameronsmith.auth.models.User;
 import com.cameronsmith.auth.services.UserService;
+import com.cameronsmith.auth.validators.UserValidator;
+
 @Controller
 public class MainController {
 	@Autowired
 	public UserService uService;
+	@Autowired
+	public UserValidator uValidate;
     
     @GetMapping("/registration")
     public String registerForm(@Valid @ModelAttribute("user") User user) {
@@ -28,10 +32,11 @@ public class MainController {
     }
     @PostMapping("/registration")
     public String register(@Valid @ModelAttribute("user") User user, BindingResult result, Model model, HttpSession session) {
-        if (result.hasErrors()) {
+    	uValidate.validate(user, result);
+    	if (result.hasErrors()) {
             return "registrationPage.jsp";
         }
-        uService.saveWithUserRole(user);
+        uService.saveUserWithAdminRole(user);
         return "redirect:/login";
     }
     @RequestMapping("/login")
@@ -54,6 +59,7 @@ public class MainController {
     public String adminPage(Principal principal, Model model) {
         String username = principal.getName();
         model.addAttribute("currentUser", uService.findByUsername(username));
+        model.addAttribute("allUsers", this.uService.allADems());
         return "adminPage.jsp";
     }
 }

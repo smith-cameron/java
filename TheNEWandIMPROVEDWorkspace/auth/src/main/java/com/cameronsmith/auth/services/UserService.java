@@ -1,5 +1,7 @@
 package com.cameronsmith.auth.services;
 
+import java.util.List;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -37,5 +39,8 @@ public class UserService {
     // 3
     public User findByUsername(String username) {
         return userRepository.findByUsername(username);
+    }
+    public List<User> allADems(){
+    	return this.userRepository.findAll();
     }
 }
