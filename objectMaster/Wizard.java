@@ -10,23 +10,39 @@ public class Wizard extends Human{
 		count += 1;
 	}
 	public void heal(Human target) {
-		int targetHealth = target.getHealth();
-        targetHealth += this.intelligence;
-        target.setHealth(targetHealth);
+		if(this.lifeCheck()){
+			int targetHealth = target.getHealth();
+			if(target.lifeCheck()){
+				targetHealth += this.intelligence;
+				target.setHealth(targetHealth);
+			}
+			else{
+				System.out.println("You cannot heal that, it is dead.");
+			}
+		}
+		else{
+			System.out.println("Your Dead, stop trying.");
+		}
 	}
-	public void fireball(Human victim) {
-        int victimHealth = victim.getHealth();
-		victimHealth -= this.intelligence*3;
-        victim.setHealth(victimHealth);
+	public void fireball(Human target) {
+		if(this.lifeCheck()){
+			int targetHealth = target.getHealth();
+			if(target.lifeCheck()){
+				targetHealth -= this.intelligence*3;
+				target.setHealth(targetHealth);
+			}
+			else{
+				System.out.println("You cannot kill " +target.getName()+ " ,it is dead.");
+			}
+		}
+		else{
+			System.out.println("Your Dead, stop trying.");
+		}
 	}
 	public static void howMany() {
 		System.out.println("Total Wizards: "+count);
 	}
 	public void displayStats() {
-		int health = this.getHealth();
-		int strength = this.getStrength();
-		int intelect = this.getIntelligence();
-		int stealth = this.getStealth();
-		System.out.println(this.name+"'s Reamaining-> Health: "+health+" Strength: "+strength+" Intelect: "+intelect+" Stealth: "+stealth);
+		System.out.println(this.name+"'s Reamaining-> Health: "+this.getHealth()+" Strength: "+this.getStrength()+" Intelect: "+this.getIntelligence()+" Stealth: "+this.getStealth());
 	}
 }
