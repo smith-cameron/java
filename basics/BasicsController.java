@@ -1,4 +1,4 @@
-class BasicsController {
+public class BasicsController {
     public static void main(String[] args) {
         Basics algorithm = new Basics();
 		double[] myArr1 = {1,3,5,7,20};
