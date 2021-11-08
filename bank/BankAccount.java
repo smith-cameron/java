@@ -62,9 +62,9 @@ public class BankAccount {
 		if(account.equals("savings") && this.savingsBalance >= amount) {
 			this.savingsBalance -= amount;
 			BankAccount.totalBalance -= amount;
-			System.out.println("Accout: "+getID()+" Withdrew "+amount+" From: "+account);
+			System.out.println("Accout: "+ getID() +" Withdrew "+amount+" From: "+account);
 		}
-		else if(account.equals("checking")&& this.checkingBalance >= amount) {
+		else if(account.equals("checking") && this.checkingBalance >= amount) {
 			this.savingsBalance -= amount;
 			BankAccount.totalBalance -= amount;
 			System.out.println("Accout: "+getID()+" Withdrew "+amount+" From: "+account);
@@ -75,13 +75,13 @@ public class BankAccount {
 		}
 	}
 	public void displayAcctInfo() {
-		System.out.println("Accout: "+getID());
-		System.out.println("Savings: "+getSavingsBalance());
-		System.out.println("Checking: "+getCheckingBalance());
-		System.out.println("Total Balance: "+displayAccountBalance());
+		System.out.println("Accout: "+ getID());
+		System.out.println("Savings: "+ getSavingsBalance());
+		System.out.println("Checking: "+ getCheckingBalance());
+		System.out.println("Total Balance: "+ displayAccountBalance());
 	}
 	public static void displayBankInfo() {
-		System.out.println("Total Acounts: "+getAccountCount());
-		System.out.println("Bank Assets: "+getTotalBalance());
+		System.out.println("Total Acounts: "+ getAccountCount());
+		System.out.println("Bank Assets: "+ getTotalBalance());
 	}
 }
