@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 
-class Basics {
+public class Basics {
     //Print 1 - 255
 	public void printNums() {
 		for(int i = 1; i <= 255; i++) {
