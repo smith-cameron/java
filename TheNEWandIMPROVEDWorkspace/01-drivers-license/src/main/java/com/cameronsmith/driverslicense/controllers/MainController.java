@@ -76,20 +76,16 @@ public class MainController {
 			}
 		}
 		License newL = this.lService.createLicense(license);
-		Long newLPersonId = newL.getPerson().getId();
-		return "redirect:/person/"+newLPersonId;
+		this.lService.generateLicenseNum(newL);
+		return "redirect:/person/"+newL.getPerson().getId();
 		
 	}
 	@GetMapping("/person/{id}")
 	public String showInfo( @PathVariable("id")Long id, Model viewModel) {
 		Person person = pService.getById(id);
 		License license = person.getLicense();
-		if( license != null) {			
-			viewModel.addAttribute("person", person);
-			viewModel.addAttribute("license", license);
-			return "showInfo.jsp";
-		}
 		viewModel.addAttribute("person", person);
+		viewModel.addAttribute("license", license);
 		return "showInfo.jsp";
 	}
 }

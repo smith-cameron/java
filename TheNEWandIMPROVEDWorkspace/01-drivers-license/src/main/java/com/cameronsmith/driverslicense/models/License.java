@@ -31,11 +31,12 @@ public class License {
 	@DateTimeFormat(pattern = "MM/dd/yyyy HH:mm:ss")
 	private Date updatedAt;
 	@Column(nullable = false)
-	@NotNull(message="You may not time travel.")
+	@NotNull(message="Expiration Date Required.")
 	@Future(message="You may not time travel.")
 	@DateTimeFormat(pattern ="yyyy-MM-dd")
 	private Date expirationDate;
 	private String state;
+	private String licenseNumber;
 	@PrePersist
 	protected void onCreate(){
 		this.createdAt = new Date();
@@ -86,5 +87,12 @@ public class License {
 	public void setPerson(Person person) {
 		this.person = person;
 	}
+	public String getLicenseNumber() {
+		return licenseNumber;
+	}
+	public void setLicenseNumber(String licenseNumber) {
+		this.licenseNumber = licenseNumber;
+	}
+	
 	
 }

@@ -18,7 +18,7 @@
 		<c:choose>
 			<c:when test="${person.license !=null }">			
 			<h3 class="displayHead">License Number:</h3>
-			<p class="displayInfo">0000000<c:out value="${person.license.id}"/></p>
+			<p class="displayInfo">${license.licenseNumber}</p>
 			<h3 class="displayHead">Exp. Date:</h3>
 			<p class="displayInfo"><fmt:formatDate pattern = "MM/dd/yyyy" value = "${license.expirationDate}"/></p>
 			<h3 class="displayHead">State:</h3>
