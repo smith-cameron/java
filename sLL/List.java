@@ -37,7 +37,7 @@ public class List{
             runner = runner.next;
             counter++;
         }
-        System.out.println(value+" is  not in the list.");
+        System.out.println(value+" is not in the list.");
         return false;
     }
     public void deleteEnd(){
@@ -48,6 +48,7 @@ public class List{
         while(runner.next.next != null){
             runner = runner.next;
         }
+        System.out.println(runner.value+" has been removed from the end of the list.");
         runner.next = null;
     }
     public void deleteAtNode(int value){
@@ -62,6 +63,7 @@ public class List{
             while(runner.next != null){
                 if(counter == value-1){
                     runner.next = runner.next.next;
+                    System.out.println("Node #"+counter+" has been removed.");
                     return;
                 }
                 runner = runner.next;
@@ -74,13 +76,14 @@ public class List{
             System.out.println("List is empty.");
         }
         Node runner = this.head;
+        int counter = 0;
         if(value == this.head.value && this.size > 1){
             this.head = runner.next;
         }else{
-            int counter = 0;
             while(runner.next != null){
                 if(runner.next.value == value){
                     runner.next = runner.next.next;
+                    System.out.println(value+" is at node #"+counter+" and has been removed.");
                     return;
                 }
                 runner = runner.next;
@@ -118,8 +121,8 @@ public class List{
         while(runner != null){
             if(counter < 1){
                 System.out.println("Node "+counter+" is the head: Value of "+runner.value);
-                counter++;
                 runner = runner.next;
+                counter++;
             }else{
                 System.out.println("Node "+counter+": Value of "+runner.value);
                 runner = runner.next;
