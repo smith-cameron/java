@@ -11,7 +11,7 @@
 <body>
 	<div id=wrapper>
 		<a id=pageLink href="/">Go Back</a>
-		<ul id=list style="list-style-type: square;">
+		<ul id=list>
 			<li>Loyalty</li>
 			<li>Courage</li>
 			<li>Veracity</li>
