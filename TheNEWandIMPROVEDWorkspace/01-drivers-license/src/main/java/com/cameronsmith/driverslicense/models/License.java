@@ -37,6 +37,7 @@ public class License {
 	private Date expirationDate;
 	private String state;
 	private String licenseNumber;
+//	String.format("%06d", num)
 	@PrePersist
 	protected void onCreate(){
 		this.createdAt = new Date();

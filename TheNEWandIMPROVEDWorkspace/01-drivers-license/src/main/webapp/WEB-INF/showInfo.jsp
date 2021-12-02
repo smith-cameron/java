@@ -21,8 +21,9 @@
 			<p class="displayInfo">${license.licenseNumber}</p>
 			<h3 class="displayHead">Exp. Date:</h3>
 			<p class="displayInfo"><fmt:formatDate pattern = "MM/dd/yyyy" value = "${license.expirationDate}"/></p>
+			<p class="displayInfo">${license.expirationDate}</p>
 			<h3 class="displayHead">State:</h3>
-			<p class="displayInfo"><c:out value="${person.license.state}"/></p>
+			<p class="displayInfo"><c:out value="${license.state}"/></p>
 			</c:when>
 			<c:otherwise>
 			<a id="addLicenseLink" href="/license/new">Add License</a>

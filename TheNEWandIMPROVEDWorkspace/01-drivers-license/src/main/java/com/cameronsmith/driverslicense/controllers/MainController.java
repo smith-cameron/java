@@ -82,10 +82,8 @@ public class MainController {
 	}
 	@GetMapping("/person/{id}")
 	public String showInfo( @PathVariable("id")Long id, Model viewModel) {
-		Person person = pService.getById(id);
-		License license = person.getLicense();
-		viewModel.addAttribute("person", person);
-		viewModel.addAttribute("license", license);
+		viewModel.addAttribute("person", pService.getById(id));
+		viewModel.addAttribute("license", pService.getById(id).getLicense());
 		return "showInfo.jsp";
 	}
 }
