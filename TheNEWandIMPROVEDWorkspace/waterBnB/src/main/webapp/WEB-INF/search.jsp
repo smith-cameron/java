@@ -9,11 +9,17 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>SEARCH</title>
-<link rel="stylesheet" href="/css/editStyle.css">
+<link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 <t:navWrap>
-	<h1>Houston, we have liftoff.</h1>
+	<h1 id="head">Find places to swim and sleep on Water BnB</h1>
+	<div class="formGroup">
+	<form action="" method="post">
+		<input type="search" class="formInput" name="address" placeholder="Search Locations"/>
+		<button type="submit">Search</button>
+	</form>
+	</div>
 </t:navWrap>
 </body>
 </html>

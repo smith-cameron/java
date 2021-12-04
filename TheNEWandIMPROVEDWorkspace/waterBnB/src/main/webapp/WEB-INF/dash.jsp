@@ -9,11 +9,11 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>DASHBOARD</title>
-<link rel="stylesheet" href="/css/editStyle.css">
+<link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 <t:navWrap>
-	<h1>Houston, we have liftoff.</h1>
+	<h1> Houston(${user.firstName}), we have liftoff.</h1>
 </t:navWrap>
 </body>
 </html>
