@@ -13,4 +13,5 @@ public interface IdeaRepo extends CrudRepository<Idea, Long> {
 	List<Idea> findAllByOrderByAllLikesDesc();
 	@Query("SELECT i FROM Idea i Order By i.usersWhoLike.size ASC")
 	List<Idea> findAllByOrderByAllLikesAsc();
+	
 }
