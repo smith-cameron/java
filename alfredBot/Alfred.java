@@ -1,3 +1,5 @@
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 class Alfred{
@@ -11,12 +13,18 @@ class Alfred{
 
     public String dateAnnouncement(){
         Date today = new Date();
-        return "Today is "+today;
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(today);
+        int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        System.out.println();
+        return "The hour is "+hour;
     }
 
     public String conversationResponse(String conversation){
         int alfred = conversation.indexOf("Alfred");
+        System.out.println(alfred);
         int alexis = conversation.indexOf("Alexis");
+        System.out.println(alexis);
         if(alfred >= 0){
             return "At your service. As you wish, naturally.";
         }
@@ -30,5 +38,23 @@ class Alfred{
     
     public String volumeUP(String input){
         return input.toUpperCase();
+    }
+    public String guestGreetingBonus(String name) {
+        // use SDF to pull the hour of day
+        String dayPeriod = "";
+        String pattern = "h";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        String hour = simpleDateFormat.format(new Date());
+        int i = Integer.parseInt(hour);
+        if (i >= 1 && i <= 11) {
+            dayPeriod = "Morning";
+        }
+        else if (i > 11 && i <= 17) {
+            dayPeriod = "Afternoon";
+        }
+        else {
+            dayPeriod = "Evening";
+        }
+        return String.format("Good %s, %s, How are you?", dayPeriod, name);
     }
 }
