@@ -17,7 +17,7 @@ class Gorilla extends Mammal{
 			if(eLev >= 5){
 				eLev -= 5;
 				this.setEnergyLevel(eLev);
-				System.out.println("Gorilla throws some poo. Energy now: "+eLev);
+				System.out.println("Gorilla throws something. Energy now: "+eLev);
 			}
 			else{
 				System.out.println("Eat bananas to gain some energy!");

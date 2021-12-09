@@ -25,7 +25,7 @@ class Mammal {
 	public boolean getLifeStatus(){
 		return this.isLiving;
 	}
-
+	
 	public void displayEnergy() {
 		if(this.lifeCheck()){
 			System.out.println(this.name+"'s energy: "+this.energyLevel);
