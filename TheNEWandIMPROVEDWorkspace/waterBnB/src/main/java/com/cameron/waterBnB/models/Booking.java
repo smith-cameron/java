@@ -40,7 +40,7 @@ public class Booking {
 	private Date bookingDate;
 	
 	@NotBlank(message="Quatity of nights required")
-	private Integer stay;
+	private Integer duration;
 	
 	private Double bookingCost;
 	
@@ -82,11 +82,11 @@ public class Booking {
 	public void setBookingDate(Date bookingDate) {
 		this.bookingDate = bookingDate;
 	}
-	public Integer getStay() {
-		return stay;
+	public Integer getStayDuration() {
+		return duration;
 	}
-	public void setStay(Integer stay) {
-		this.stay = stay;
+	public void setStayDuration(Integer duration) {
+		this.duration = duration;
 	}
 	public Double getBookingCost() {
 		return bookingCost;

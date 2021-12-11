@@ -90,7 +90,15 @@ public class User {
 	public User() {
 	}
 	
-//	Getter/Setter Pairs -----------------------------------
+public User(String email, String firstName, String lastName, String password, String confirmPassword) {
+		this.email = email;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.password = password;
+		this.confirmPassword = confirmPassword;
+	}
+
+	//	Getter/Setter Pairs -----------------------------------
 	public Long getId() {
 		return id;
 	}
@@ -175,7 +183,6 @@ public class User {
 	public void setListingsLiked(List<Listing> listingsLiked) {
 		this.listingsLiked = listingsLiked;
 	}
-	
 	
 }
 

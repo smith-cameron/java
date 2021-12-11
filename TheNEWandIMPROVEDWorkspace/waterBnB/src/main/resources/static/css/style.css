@@ -1,7 +1,11 @@
 @charset "UTF-8";
+*{
+	margin: 0px;
+	padding: 0px;
+}
 #wrapper{
-	width: 1000px;
-	height: 600px;
+	width: device-width;
+	height: 1000px;
 	margin: 0px auto;
 	padding-top: 25px;
 	font-family:Arial, Helvetica, sans-serif;
@@ -9,16 +13,30 @@
     background: radial-gradient(circle, rgba(92,97,176,1) 0%, rgba(40,46,91,1) 84%);
     color: blanchedalmond;
 }
-#navTitle{
-    display:inline-block;
-    color: black;
+#head{
+	text-align: center;
+	font-weight: bolder;
+	color: black;
+	margin-top: 50px;
 }
-.navLink{
-    color:coral;
-    margin: 0px 20px;
-    font-size: larger;
-    text-align: right;
+.formInput{
+	height: 25px;
+	width: 500px;
+	margin: 20px 10px;
 }
+.formGroup{
+	text-align: center;
+	
+}
+
+
+
+
+
+
+
+
+
 header{
     display: flex;
     align-items: center;
@@ -26,23 +44,13 @@ header{
     border-bottom: thin solid black;
     justify-content: space-evenly;
 }
-#head{
-	text-align: center;
-	text-decoration: underline;
-	color: black;
-	margin-top: 50px;
-}
+
 .subHead{
 	text-align: center;
     text-decoration: underline;
     color:coral;
 }
-#logoutLink{
-	color:coral;
-    margin: 0px 20px;
-    font-size: larger;
-    text-align: right;
-}
+
 .pageLink{
 	color:coral;
     margin: 0px 20px;
@@ -58,10 +66,7 @@ header{
 	color: crimson;
     text-align: center;
 }
-.formInput{
-	width: 600px;
-	margin: 10px;
-}
+
 #button{
 	padding: 3px 8px;
 	margin: 10px;

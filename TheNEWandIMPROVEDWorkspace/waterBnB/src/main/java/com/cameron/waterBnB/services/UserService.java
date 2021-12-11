@@ -30,6 +30,8 @@ public class UserService {
 		}
 	}
 	public User updateEntry(User toUpdate) {
+		String hash = BCrypt.hashpw(toUpdate.getPassword(), BCrypt.gensalt());
+		toUpdate.setPassword(hash);
 		return this.uRepo.save(toUpdate);
 	}
 	public List<User> getAll(){
