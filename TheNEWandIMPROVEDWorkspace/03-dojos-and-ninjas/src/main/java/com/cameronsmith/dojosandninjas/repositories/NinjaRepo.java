@@ -10,5 +10,4 @@ import com.cameronsmith.dojosandninjas.models.Ninja;
 @Repository
 public interface NinjaRepo extends CrudRepository<Ninja, Long>{
 	List<Ninja> findAll();
-
 }
