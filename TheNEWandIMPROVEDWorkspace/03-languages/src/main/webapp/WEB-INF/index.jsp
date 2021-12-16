@@ -11,7 +11,7 @@
 </head>
 <body>
 <div id=wrapper>
-	<h1>Code Languages</h1>
+	<h1>Programming Languages</h1>
 	<table id="langDisplay">
 		<thead>
 			<tr>

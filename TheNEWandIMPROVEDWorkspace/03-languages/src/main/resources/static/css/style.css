@@ -45,8 +45,11 @@ thead{
 #nameLink{
 	color: yellow;
 }
-#pageLink{
+.pageLink{
 	display: inline-block;
-	margin: 20px 0px 10px 850px;
 	color: yellow;
+	margin: 0px 25px;
+}
+#header{
+	padding: 30px 0px 30px 100px;
 }

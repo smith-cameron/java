@@ -11,9 +11,13 @@
 </head>
 <body>
 	<div id = wrapper>
+	<div id=header>
+	<a class="pageLink" href="/languages/${lang.id}/delete">Delete</a> |
+	<a class="pageLink" href="/languages">Home</a>
 		<h1><c:out value="${lang.name}"/></h1>
-		<a id="pageLink" href="/languages">Go Back</a>
-		<form:form id="inputForm" action="/languages/${lang.id}/edit" method="post" modelAttribute="language">
+	</div>
+	<div id="inputForm">
+	<form:form  action="/languages/${lang.id}/edit" method="post" modelAttribute="language">
 			<p>
 		        <form:label path="name">Name:</form:label>
 		        <form:input path="name" value="${lang.name}"/>
@@ -31,6 +35,7 @@
 		    </p>
 		    <input id="button" type="submit" value="Submit"/>
 		</form:form>
+	</div>
 	</div>
 </body>
 </html>

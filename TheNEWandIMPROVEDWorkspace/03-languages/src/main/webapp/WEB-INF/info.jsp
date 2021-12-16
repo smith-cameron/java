@@ -10,12 +10,14 @@
 </head>
 <body>
 	<div id=wrapper>
-	<a id="pageLink" href="/languages">Go Back</a>
+	<div id=header>
+	<a class="pageLink" href="/languages/${lang.id}/edit">Edit</a> |
+	<a class="pageLink" href="/languages/${lang.id}/delete">Delete</a> |
+	<a class="pageLink" href="/languages">Home</a>
+	</div>
 		<h1><c:out value="${lang.name}"/></h1>
 		<h2>Creator: <c:out value="${lang.creator}"/></h2>
 		<h2>Version: <c:out value="${lang.version}"/></h2>
-		<a id="pageLink" href="/languages/${lang.id}/edit">Edit</a>
-		<a id="pageLink" href="/languages/${lang.id}/delete">Delete</a>
 	</div>
 </body>
 </html>
