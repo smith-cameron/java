@@ -37,7 +37,7 @@ public class UserService {
 		return this.uRepo.save(toUpdate);
 	}
 	public List<User> getAll(){
-		return this.uRepo.find;
+		return this.uRepo.findAll();
 	}
 	public User getById(Long id) {
 		return this.uRepo.findById(id).orElse(null);

@@ -90,7 +90,7 @@ public class User {
 	public User() {
 	}
 	
-public User(String email, String firstName, String lastName, String password, String confirmPassword) {
+	public User(String email, String firstName, String lastName, String password, String confirmPassword) {
 		this.email = email;
 		this.firstName = firstName;
 		this.lastName = lastName;
