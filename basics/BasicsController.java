@@ -31,4 +31,5 @@ public class BasicsController {
         int[] shwiftyList = {1, 5, 10, 7, -2};
 		System.out.println(algorithm.getShwifty(shwiftyList));
     }
+    
 }
