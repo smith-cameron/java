@@ -1,22 +1,9 @@
 import java.util.Random;
 
 public class BankAccount {
-	private String accountNum;
-	private double checkingBalance;
-	private double savingsBalance;
 	public static int accountCount;
 	public static double totalBalance = 0;
-	private double defChecking = 0;
-	private double defSavings = 0;
-
-	public BankAccount() {
-		this.accountNum = createAccountNum();
-		this.checkingBalance = defChecking;
-		this.savingsBalance = defSavings;
-		accountCount += 1;
-	}
-
-	private String createAccountNum() {
+	private static String createAccountNum() {
 		String randomNum = "";
 		Random rand = new Random();
 		System.out.println(randomNum);
@@ -25,6 +12,21 @@ public class BankAccount {
 		}
 		return randomNum;
 	}
+
+	private String accountNum;
+	private double checkingBalance;
+	private double savingsBalance;
+	private double defChecking = 0;
+	private double defSavings = 0;
+
+	public BankAccount() {
+		this.accountNum = BankAccount.createAccountNum();
+		this.checkingBalance = defChecking;
+		this.savingsBalance = defSavings;
+		BankAccount.accountCount += 1;
+	}
+
+	
 	private double displayAccountBalance() {
 		double userTotal = (this.checkingBalance+this.savingsBalance);
 		return userTotal;
