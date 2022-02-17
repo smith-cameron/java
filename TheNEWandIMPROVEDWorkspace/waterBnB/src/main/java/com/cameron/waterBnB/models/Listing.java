@@ -1,5 +1,6 @@
 package com.cameron.waterBnB.models;
 
+
 import java.util.Date;
 import java.util.List;
 
