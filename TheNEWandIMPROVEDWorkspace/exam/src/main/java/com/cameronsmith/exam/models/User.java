@@ -69,8 +69,9 @@ public class User {
         joinColumns = @JoinColumn(name = "user_id"), 
         inverseJoinColumns = @JoinColumn(name = "idea_id")
     )
-    private List<Idea> usersLikes;
-//	Bean --------------------------------------------------
+    private List<Idea> liked;
+
+	//	Bean --------------------------------------------------
 	public User() {
 	}
 //	Getter/Setter Pairs-------------
@@ -128,11 +129,12 @@ public class User {
 	public void setCreatedIdeas(List<Idea> createdIdeas) {
 		this.createdIdeas = createdIdeas;
 	}
-	public List<Idea> getUsersLikes() {
-		return this.usersLikes;
-	}
-	public void setUsersLikes(List<Idea> usersLikes) {
-		this.usersLikes = usersLikes;
-	}
 	
+	
+	public List<Idea> getLiked() {
+		return liked;
+	}
+	public void setLiked(List<Idea> liked) {
+		this.liked = liked;
+	}
 }

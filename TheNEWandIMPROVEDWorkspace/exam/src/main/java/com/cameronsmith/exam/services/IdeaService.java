@@ -37,9 +37,9 @@ public class IdeaService {
 		this.iRepo.save(idea);
 	}
 	public List<Idea> ideasByLikesDesc(){
-		return this.iRepo.findAllByOrderByAllLikesDesc();
+		return this.iRepo.orderByDesc();
 	}
 	public List<Idea> ideasByLikesAsc(){
-		return this.iRepo.findAllByOrderByAllLikesAsc();
+		return this.iRepo.orderByAsc();
 	}
 }

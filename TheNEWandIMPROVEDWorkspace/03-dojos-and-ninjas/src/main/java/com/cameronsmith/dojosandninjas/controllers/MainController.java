@@ -38,7 +38,6 @@ public class MainController {
 	@GetMapping("/dojo/{id}")
 	public String showInfo(@PathVariable("id")Long id, Model viewModel) {
 		Dojo thisDojo = dService.getById(id);
-		List<Ninja> ninjas = thisDojo.getNinjas();
 		viewModel.addAttribute("dojo", dService.getById(id));
 		viewModel.addAttribute("ninjas", thisDojo.getNinjas());
 		return "dojoInfo.jsp";

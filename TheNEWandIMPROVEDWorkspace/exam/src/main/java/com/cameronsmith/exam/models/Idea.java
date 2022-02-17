@@ -52,7 +52,7 @@ public class Idea {
         joinColumns = @JoinColumn(name = "idea_id"), 
         inverseJoinColumns = @JoinColumn(name = "user_id")
     )
-    private List<User> usersWhoLike;
+    private List<User> likers;
 	
 	public Idea() {
 	}
@@ -87,11 +87,40 @@ public class Idea {
 		this.ideaCreator = ideaCreator;
 	}
 	public List<User> getUsersWhoLike() {
-		return this.usersWhoLike;
+		return this.likers;
 	}
 	public void setUsersWhoLike(List<User> usersWhoLike) {
-		this.usersWhoLike = usersWhoLike;
+		this.likers = usersWhoLike;
 	}
 	
-	
+//	@DateTimeFormat(pattern = "MM/dd/yyyy HH:mm:ss")
+//	private Date updatedAt;
+//	@PrePersist
+//	protected void onCreate(){
+//		this.createdAt = new Date();
+//	}
+//	@PreUpdate
+//	protected void onUpdate(){
+//		this.updatedAt = new Date();
+//	}
+//	@NotBlank(message="Idea Required")
+//	private String ideaContent;
+//	
+//	@ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name="user_id")
+//    private User ideaCreator;
+//	
+//	@ManyToMany(fetch = FetchType.LAZY)
+//    @JoinTable(
+//        name = "likes", 
+//        joinColumns = @JoinColumn(name = "idea_id"), 
+//        inverseJoinColumns = @JoinColumn(name = "user_id")
+//    )
+//    private List<User> likers;
+//	
+//	public Idea() {
+//	}
+//	public Long getId() {
+//		return this.id;
+//	}
 }

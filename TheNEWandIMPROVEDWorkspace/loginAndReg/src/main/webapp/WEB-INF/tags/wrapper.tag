@@ -9,7 +9,7 @@
 <body>
 	<div id=wrapper>
 	<nav>
-	<a class="link" href="/logout">Logout</a>
+	<a class="pageLink" href="/logout">Logout</a>
 	</nav>
 	<jsp:doBody/>
 	</div>
