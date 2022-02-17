@@ -61,7 +61,7 @@
 			    </c:choose>
 			    </c:forEach>
 				</select>
-				<input id="submitButton" type="submit" value="Add"/>
+				<input id="submitButton" type="submit" value="Join"/>
 			</form>
 		</div>
 		</c:otherwise>

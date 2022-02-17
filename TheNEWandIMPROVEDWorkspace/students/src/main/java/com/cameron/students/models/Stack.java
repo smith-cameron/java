@@ -74,7 +74,7 @@ public class Stack {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-	public String getTitlec() {
+	public String getTitle() {
 		return title;
 	}
 	public void setTitle(String title) {

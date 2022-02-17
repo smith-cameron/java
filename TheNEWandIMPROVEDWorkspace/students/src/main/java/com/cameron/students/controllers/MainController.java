@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.cameron.students.models.Contact;
 import com.cameron.students.models.Dorm;
@@ -111,12 +112,12 @@ public class MainController {
 		return "ShowStudent.jsp";
 	}
 	@GetMapping("/student/{id}/edit")
-	public String editStudent(@PathVariable("id")Long studentId, Model viewModel) {
+	public String editStudent(@ModelAttribute("studentform")Student st, @PathVariable("id")Long studentId, Model viewModel) {
 		viewModel.addAttribute("student", this.sService.getById(studentId));
 		return "EditStudent.jsp";
 	}
 	@PostMapping("/student/{id}/edit")
-	public String postEditStudent(@Valid @ModelAttribute("dorm")Student updatedStudent, BindingResult result, @PathVariable("id")Long studentId, Model viewModel) {
+	public String postEditStudent(@Valid @ModelAttribute("studentform")Student updatedStudent, BindingResult result, @PathVariable("id")Long studentId, Model viewModel) {
 		if (result.hasErrors()) {
 			viewModel.addAttribute("student", this.sService.getById(studentId));
 			return "EditStudent.jsp";
@@ -125,17 +126,17 @@ public class MainController {
 		return "redirect:/students";
 	}
 	@PostMapping("/dorms/{id}/add")
-	public String addDorm(@RequestParam("dorm")Long dormId, @PathVariable("id")Long studentId) {
+	public String addDorm(@RequestParam("dorm")Long dormId, @PathVariable("id")Long studentId, RedirectAttributes redirectAtters) {
 		Dorm dormToAdd = this.dService.getById(dormId);
 		this.sService.setDorm(studentId, dormToAdd);
-		return "redirect:/students/"+studentId;
+		redirectAtters.addAttribute("sId", studentId);
+		return String.format("redirect:/students/%d", studentId);
 	}
 	@PostMapping("/dorms/{id}/remove")
 	public String removeDormViaForm(@PathVariable("id")Long studentId) {
 		Student student = this.sService.getById(studentId);
 		this.sService.removeDorm(student);
-		
-		return "redirect:/students/"+studentId;
+		return "redirect:/students/{id}";
 	}
 	@GetMapping("/{dormId}/{studentId}/remove")
 	public String removeDormViaLink(@PathVariable("studentId")Long studentId,@PathVariable("dormId")Long dormId) {
