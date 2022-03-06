@@ -1,0 +1,62 @@
+@charset "UTF-8";
+*{
+    margin: 0px;
+    padding: 0px;
+}
+html, body {
+    width: 100%;
+    height:100vh;
+}
+#wrapper{
+    margin: 0px auto;
+    width: 100%;
+    height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    background: rgb(92,97,176);
+    background: radial-gradient(circle, rgba(92,97,176,1) 0%, rgba(40,46,91,1) 84%);
+    color: blanchedalmond;
+}
+#head{
+	display: flex;
+    align-items: center;
+    padding: 0px 25px;
+    border-bottom: thin solid black;
+    justify-content: space-evenly;
+}
+.subHead{
+    text-align: center;
+    text-decoration: underline;
+    color:coral;
+    margin-bottom: 15px;
+}
+#regDiv{
+    display: inline-block;
+    width: fit-content;
+    text-align: right;
+    vertical-align: top;
+    margin: 8% 150px 0px 15%;
+}
+.error{
+    color: crimson;
+    text-align: center;
+}
+#ExpenseDiv{
+	margin: 8% 150px 0px 15%;
+	text-align: center;
+	display: inline-block;
+	vertical-align: top;
+}
+#iLink{
+	color:coral;
+}
+table{
+	margin: 10px auto;
+}
+.formGroup{
+	margin: 10px;
+	text-align: center;
+}
+.tData{
+	padding: 8px 20px;
+	text-align: center;
+}
