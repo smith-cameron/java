@@ -17,11 +17,11 @@ public class OrdersController {
         // System.out.println(item4.getPrice());
 
         // // Order variables -- order1, order2 etc.
-        // Order order1 = new Order("Cindhuri");
+        Order order1 = new Order("Cindhuri");
         // System.out.println(order1.getGuestName());
-        // Order order2 = new Order("Jimmy");
+        Order order2 = new Order("Jimmy");
         // System.out.println(order2.getGuestName());
-        // Order order3 = new Order("Noah");
+        Order order3 = new Order("Noah");
         // System.out.println(order3.getGuestName());
         // Order order4 = new Order("Sam");
         // System.out.println(order4.getGuestName());

@@ -1,22 +1,22 @@
 @Service
-public class ExpenseService {
+public class Service {
 	@Autowired
-	private ExpenseRepo eRepo;
+	private UserRepo repo;
 	
-	public Expense create(Expense newEntry) {
-		return this.eRepo.save(newEntry);
+	public User create(User newEntry) {
+		return this.repo.save(newEntry);
 	}
-	public Expense update(Expense toUpdate) {
-		return this.eRepo.save(toUpdate);
+	public User update(User toUpdate) {
+		return this.repo.save(toUpdate);
 	}
-	public List<Expense> getAll(){
-		return this.eRepo.findAll();
+	public List<User> getAll(){
+		return this.repo.findAll();
 	}
-	public Expense getById(Long id) {
-		return this.eRepo.findById(id).orElse(null);
+	public User getById(Long id) {
+		return this.repo.findById(id).orElse(null);
 	}
 	public void deleteById(Long id) {
-		this.eRepo.deleteById(id);
+		this.repo.deleteById(id);
 	}
 
 }

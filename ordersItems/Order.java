@@ -5,10 +5,10 @@ public class Order {
     private String guestName;
     // private double total = 0;
     private boolean isReady;
-    private ArrayList<Item> items = new ArrayList<Item>();
+    public ArrayList<Item> items = new ArrayList<Item>();
     // --------- Constructors ---------
     public Order(){
-        this.guestName = "guest";
+        this.guestName = 'guest';
         this.isReady = false;
     }
     public Order(String guestInput){

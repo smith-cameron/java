@@ -47,7 +47,7 @@ public class Order {
         }
         return total;
         }
-        public void display() {
+    public void display() {
         System.out.printf("Customer Name: %s", this.name);
         for(Item i: this.items) {
             System.out.println(i.getName() + " - $" + i.getPrice());

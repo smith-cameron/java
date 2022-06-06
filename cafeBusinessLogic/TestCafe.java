@@ -39,7 +39,8 @@ public class TestCafe{
     prices.add(1.5);
     prices.add(4.0);
     prices.add(4.5);
-    appTest.displayMenu(menu, prices);
+    double[] prices2 ={3.5, 6.25, 7.87};
+    appTest.displayMenu(menu, prices2);
     }
 
     // System.out.println("\n----- Add Customer Test 2-----");

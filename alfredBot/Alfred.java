@@ -11,13 +11,14 @@ class Alfred{
         return "Good "+dayPeriod+", "+name+". Lovely to see you!";
     }
 
-    public String dateAnnouncement(){
+    public int dateAnnouncement(){
         Date today = new Date();
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(today);
         int hour = calendar.get(Calendar.HOUR_OF_DAY);
         System.out.println();
-        return "The hour is "+hour;
+        System.out.println("The hour is "+hour);
+        return hour;
     }
 
     public String conversationResponse(String conversation){
@@ -45,11 +46,12 @@ class Alfred{
         String pattern = "h";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
         String hour = simpleDateFormat.format(new Date());
-        int i = Integer.parseInt(hour);
+        int i = this.dateAnnouncement();
+        // System.out.println(i);
         if (i >= 1 && i <= 11) {
             dayPeriod = "Morning";
         }
-        else if (i > 11 && i <= 17) {
+        if (i > 11 && i <= 17) {
             dayPeriod = "Afternoon";
         }
         else {

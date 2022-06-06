@@ -4,7 +4,7 @@ class PuzzleController{
         // System.out.println(puzzle.getTenRolls());
         System.out.println(puzzle.randomLetter());
         System.out.println(puzzle.generatePassword(10));
-        System.out.println(puzzle.getNewPasswordSet(2, 12));
+        System.out.println(puzzle.getNewPasswordSet(5, 5));
 
         
     }

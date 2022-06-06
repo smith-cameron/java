@@ -1,20 +1,26 @@
-@Controller
-public class TheController {
-	@Autowired
-	private ExpenseService eService;
-	
-	@GetMapping("/")
-	public String rootRoute(@ModelAttribute("newExpense")Expense expenseInput, Model viewModel){
-		viewModel.addAttribute("expenses", this.eService.getAll());
-		return "index.jsp";
+
+public class Controller {
+	public static void main(String[] args) {
+	int[] array = {1,2,4,6};
+	System.out.println(lucky13(array));
 	}
-	@PostMapping("/create")
-	public String createExpense(@Valid @ModelAttribute("newExpense")Expense expenseInput, BindingResult result, Model viewModel) {
-		if (result.hasErrors()) {
-			viewModel.addAttribute("expenses", this.eService.getAll());
-			return "index.jsp";
+
+	public static boolean lucky13(int[] input){
+		boolean present1 = false;
+		boolean present3 = false;
+		for(int i = 0; i<input.length; i++){
+			if(input[i] == 1){
+				present1 = true;
+			}
+			if(input[i] == 3){
+				present3 = true;
+			}
 		}
-		this.eService.create(expenseInput);
-		return "redirect:/";
+		if(present1 == true && present3 == true){
+			return false;
+		}
+		else{
+			return true;
+		}
 	}
 }

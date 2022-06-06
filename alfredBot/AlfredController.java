@@ -9,7 +9,7 @@ public class AlfredController {
         System.out.println("------------------");
         System.out.println(alfredBot.conversationResponse("Maybe that's what Batman is about. Not winning. But failing..."));
         System.out.println(alfredBot.volumeUP("This is me yelling!"));
-        System.out.println(alfredBot.dateAnnouncement());
+        alfredBot.dateAnnouncement();
         System.out.println(alfredBot.guestGreetingBonus("Beth Kane"));
     }
 }
