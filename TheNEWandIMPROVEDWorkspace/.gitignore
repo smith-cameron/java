@@ -1,7 +1,8 @@
 
 # Created by https://www.toptal.com/developers/gitignore/api/macos,java,java-web,root
 # Edit at https://www.toptal.com/developers/gitignore?templates=macos,java,java-web,root
-
+##CodingDojo##
+/exam
 ### Java ###
 # Compiled class file
 *.class
